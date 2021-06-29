@@ -1,6 +1,6 @@
 Store items as Nodes.
-store all nodes in a static dictionary indexed by itemID
-node.successors is a static dictionary indexed by itemID 
+store all nodes in a static dictionary indexed by id
+node.successors is a static dictionary indexed by id 
 node1.successors[node2.id] = dist <=> node1 and node2 are dist units away from each other
 this structure allows us to exclude "null" entries before we know the distance between two nodes(each node will be created only having edges with other nodes in the aisle). 
 AISLES
@@ -13,9 +13,9 @@ TODAY:
     - compose them into an array of Aisles, where an aisle is an object with a .left and a .right
     - aisle.left , aisle.right are each simply a list of item names
     - loop through all aisles. for each aisle, do the following:
-        (i) for each item: assign a unique itemID, create a Node for it.
+        (i) for each item: assign a unique id, create a Node for it.
         (ii) for each Node: create an edge from it to each other Node in the aisle, weighting according to distance between centers.
-        (iii) give each aisle a top and bottom connector.label them top or bottom.  A connector is a node with no item name. to be stored in the array, the node woould need an itemID, but its not an item. thus, we should call it just an id (or a nodeID).
+        (iii) give each aisle a top and bottom connector.label them top or bottom.  A connector is a node with no item name. to be stored in the array, the node woould need an id, but its not an item. thus, we should call it just an id (or a nodeID).
         (iv) position each connector between the left and right sections of the aisle(top at top of aisle, bottom on bottom), and assign it an edge to and from each node in that aisle, an edge to each other connector, and an edge to the start, all weighted by euclidean dist. add it to the nodes array
 
 

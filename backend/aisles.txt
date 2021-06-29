@@ -1,0 +1,75 @@
+Aisle 1:
+    left: 
+        - supplements
+    right:
+        - Vitamins
+Aisle 2: 
+    left: 
+        - Child supplements
+    right:
+        - Baby Products
+Aisle 3:
+    left:
+        - Protein Powder
+    right:
+        - Fruit Bars
+        - Nut Bars
+        - Snack Bars
+Aisle 4:
+    left: 
+        - Cookies
+        - Candy
+    right:
+        - Jerky
+        - Crackers
+        - Snacks
+Aisle 5:
+    left:
+        - Popcorn
+        - Chips
+    right:
+        - Nuts
+Aisle 6:
+    left:
+        - Crackers
+        - Dried Fruit
+    right:
+        - Soup
+        - Noodles
+        - Rice
+        - Beans
+Aisle 7:
+    left:
+        - Beans
+        - Olives
+        - Sauce
+    right:
+        - Canned Fish
+        - Condiments
+Aisle 8:
+    left:
+        - Flour
+        - Sugar
+        - Spices
+    right:
+        - Oil
+Aisle 9:
+    left:
+        - Bread
+    right:
+        - Cereal
+Aisle 10:
+    left: 
+        - Oats
+        - Syrup
+        - Jam
+        - Peanut Butter
+        - Honey
+    right:
+        - Drinks
+        - Juices
+Aisle 11:
+    left:
+        - Tea
+    right:
+        - Coffee
