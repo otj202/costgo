@@ -64,10 +64,12 @@ var aislesJSON = require("./aisles.json");
 function parseAisles(aisles) {
     let nodes=[];
     aisleNumber=1;
-    for (const aisleDict of Object.values(aisles)){       
-        let aisleNodes = [];
+    for (const [aisleName,aisleDict] of Object.entries(aisles)){       
         let leftSideLength=aisleDict["left"].length;
         let rightSideLength=aisleDict["right"].length;
+        topConnector=new Node("top"+aisleName,aisleNumber,null,"top");
+        getCoords(topConnector,0,rightSideLength);
+        let aisleNodes = [topConnector];
         for(i=0;i<leftSideLength;i++){
             let node= new Node(aisleDict["left"][i],aisleNumber,"l");
             getCoords(node,i,leftSideLength);
@@ -78,6 +80,9 @@ function parseAisles(aisles) {
             getCoords(node,i,rightSideLength);
             aisleNodes.push(node);
         }
+        bottomConnector=new Node("bottom"+aisleName,aisleNumber,null,"bottom");
+        getCoords(bottomConnector,0,rightSideLength);
+        aisleNodes.push(bottomConnector);
         nodes.push(aisleNodes);
         aisleNumber += 1;
     }    
