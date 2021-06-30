@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 import Item from './Item.jsx';
 import styled from 'styled-components';
 
+import apples from '../assets/Apples.png';
+import oranges from '../assets/Oranges.png';
+
 const Container = styled.div`
   background-color: #364C83;
   border-radius: 20px;
   margin-left: 7%;
   margin-right: 7%;
   margin-top: 30px;
-  height: 400px;
+  height: 60vh;
   overflow: scroll;
 `;
 
@@ -23,8 +26,10 @@ class Inventory extends Component {
     return (
       <Container>
         <Title>Inventory</Title>
-        <Item name="Apples" />
-        <Item name="Oranges"/>
+        <Item name="Apples" src={apples}/>
+        <Item name="Oranges" src={oranges}/>
+        <Item name="Oranges" src={oranges}/>
+        <Item name="Oranges" src={oranges}/>
       </Container>
     );
   }

@@ -1,14 +1,20 @@
-import logo from './logo.svg';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from './components/Header.jsx';
 import Content from './components/Content.jsx';
+import Path from './components/Path.jsx';
 import './App.css';
 
 function App() {
   return (
-    <div>
-    <Header />
-    <Content />
-    </div>
+    <>
+      <Header />
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Content}></Route>
+          <Route path="/path" component={Path}></Route>
+        </Switch>
+      </Router>
+    </>
   );
 }
 
