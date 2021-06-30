@@ -83,5 +83,60 @@ function parseAisles(aisles) {
     }    
     return nodes;
 }
-let res= parseAisles(aislesJSON);
-console.log(res);
+let aisles= parseAisles(aislesJSON);
+assignNeighborsAndWeights(aisles);
+storeNodes(aisles);
+console.log(aisles);
+
+function assignNeighborsAndWeights(aisles) {
+    for(var i = 0; i < aisles.length; i++) {
+        for(var j = 0; j < aisles[i].length; j++) {
+
+            //Check to see if the node is an end helper node, if so connect it to adjacent end helpers
+            if(j == 0 || j == aisles[i].length-1) {
+                if(i != 0) {
+                    aisles[i][j].addEdge(aisles[i-1][aisles[i-1].length-1]);                    
+                }
+                if(i != aisles.length-1) {
+                    aisles[i][j].addEdge(aisles[i+1][aisles[i+1].length-1]);
+                }
+            }
+
+            //Loop through items on the same aisle, connect and store distance
+            for(var k = 0; k < aisles[i].length; k++) {
+                if(k != j) {
+                    aisles[i][j].addEdge(aisles[i][k]);
+                }
+            }
+        }
+    }
+}
+
+function storeNodes(aisles) {
+    startNode = new Node("start", 0, null, "top");
+    startNode.setXY(0,0);
+    exitNode = new Node("exit", 0, null, "bottom");
+    exitNode.setXY(0,50);
+
+    for(var i = 0; i < aisles.length; i++) {
+        startNode.addEdge(aisles[i][0]);
+        aisles[i][0].addEdge(startNode);
+        exitNode.addEdge(aisles[i][aisles[i].length-1]);
+        aisles[i][aisles[i].length-1].addEdge(exitNode);
+    }
+
+    var nodesDict = {};
+    for(var i = 0; i < aisles.length; i++) {
+        for(var j = 0; j < aisles[i].length; j++) {
+            nodesDict[aisles[i][j].name] = aisles[i][j];
+        }
+    }
+
+    nodesDict[startNode.name] = startNode;
+    nodesDict[exitNode.name] = exitNode;
+
+    var fs = require('fs');
+    fs.writeFile("map.json", JSON.stringify(nodesDict), function(err, result) {
+        if(err) console.log('error', err);
+      });
+}
