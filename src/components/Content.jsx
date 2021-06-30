@@ -7,6 +7,7 @@ const ContentStyle = styled.div`
   background-color: #091A45;
   height: 80vh;
   width: 100vw;
+  position: fixed;
 `;
 
 const Row = styled.div`

@@ -8,6 +8,10 @@ const Costgo = styled.button`
   margin-top: 25px;
   border-radius: 20px;
   border: none;
+
+  :hover {
+    background-color: red;
+  }
 `;
 
 const Label = styled.p`
@@ -25,7 +29,7 @@ class Button extends Component {
     return (
       <Costgo>
         <Label>
-          costGo!
+          costGO!
         </Label>
       </Costgo>
     );
