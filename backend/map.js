@@ -199,4 +199,43 @@ function draw_map(root){ //impleneted a depth search here
 console.log("Length:"+ entry_node.array.length);
 
 draw_map(entry_node);
-draw_path(path_array);
+draw_path(path_array); 
+
+
+////////////////////////////////////// 
+var shelf_width = 50;
+var shelf_length = 200; 
+var aisle_width = 100;
+
+function getCoords(node, index, length){
+    
+    var x_pos = (shelf_width+aisle_width)*(node.aisle);
+    var y_pos = 30; 
+
+    var x = 0;
+    var y = 0;
+
+    if(node.connectorType == "top"){
+        x = x_pos-(aisle_width/2) 
+        y = y_pos - 5;
+    }
+    else if(node.connectorType == "bottom"){
+        x = x_pos - (aisle_width/2) 
+        y = y_pos + 5 + shelf_length;
+    }
+    else{
+
+        var z = shelf_length/length;
+        y = y_pos + (z*index) + (z/2);
+
+        if(node.side == "r"){
+            x = x_pos;
+        }
+        else{
+            x = x_pos - aisle_width;
+        }
+    }
+
+    node.setXY(x,y);
+
+}
