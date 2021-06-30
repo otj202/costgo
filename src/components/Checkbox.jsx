@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const CheckboxContainer = styled.div`
   display: inline-block;
   vertical-align: middle;
+
 `;
 
 const Icon = styled.svg`
@@ -27,15 +28,17 @@ const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
 `;
 
 const StyledCheckbox = styled.div`
+  padding: 3px;
   display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: ${props => (props.checked ? 'salmon' : 'papayawhip')};
+  width: 20px;
+  height: 20px;
+  background: ${props => (props.checked ? 'lightcoral' : 'white')};
   border-radius: 3px;
   transition: all 150ms;
+  overflow: hidden;
 
   ${HiddenCheckbox}:focus + & {
-    box-shadow: 0 0 0 3px pink;
+    box-shadow: 0 0 0 3px red;
   }
 
   ${Icon} {

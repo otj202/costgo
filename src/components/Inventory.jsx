@@ -25,10 +25,6 @@ class Inventory extends Component {
         <Title>Inventory</Title>
         <Item name="Apples" />
         <Item name="Oranges"/>
-        <Item name="Bananas"/>
-        <Item name="Peaches"/>
-        <Item name="Lemons"/>
-        <Item name="Swimsuit"/>
       </Container>
     );
   }

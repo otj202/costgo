@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Checkbox from './Checkbox.jsx';
 import styled from 'styled-components';
+import Apples from '../assets/Apples.png'
 
 const ItemBox = styled.div`
   background-color: #6D7FAB;
@@ -23,6 +24,14 @@ const ItemName = styled.p`
   padding-top: 20px;
   padding-bottom: 20px;
   font-size: 25px;
+
+`;
+
+const ItemImg = styled.img`
+  padding-left: 10px;
+  padding-right: 0px;
+  width: 30%;
+
 `;
 
 class Item extends Component {
@@ -36,7 +45,7 @@ class Item extends Component {
     return (
       <ItemBox>
         <Column>
-          <h1>hello</h1>
+          <ItemImg src={Apples}/>
         </Column>
         <Column>
         <ItemName>{this.props.name}</ItemName>
