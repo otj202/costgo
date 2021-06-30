@@ -3,12 +3,11 @@ import styled from 'styled-components';
 
 const Costgo = styled.button`
   background-color: #E31837;
-  margin-left: 100px;
-  margin-right: 100px;
+  margin-left: 7%;
+  margin-right: 7%;
   margin-top: 25px;
   border-radius: 20px;
   border: none;
-  width: 72.5%;
 `;
 
 const Label = styled.p`

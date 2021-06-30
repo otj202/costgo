@@ -20,6 +20,9 @@ const Row = styled.div`
 const Column = styled.div`
   float: left;
   width: 50%;
+  display: flex;
+  align-self: center;
+  flex-direction: column;
 `;
 
 const Instructions = styled.p`
@@ -27,6 +30,7 @@ const Instructions = styled.p`
   margin-left: 100px;
   margin-right: 100px;
   font-size: 30px;
+  margin-top: 30px;
 `;
 
 class Content extends Component {
