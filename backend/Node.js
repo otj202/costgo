@@ -100,10 +100,12 @@ function assignNeighborsAndWeights(aisles) {
             //Check to see if the node is an end helper node, if so connect it to adjacent end helpers
             if(j == 0 || j == aisles[i].length-1) {
                 if(i != 0) {
-                    aisles[i][j].addEdge(aisles[i-1][aisles[i-1].length-1]);                    
+                    let index= j==0?0:aisles[i-1].length-1;
+                    aisles[i][j].addEdge(aisles[i-1][index]);                    
                 }
                 if(i != aisles.length-1) {
-                    aisles[i][j].addEdge(aisles[i+1][aisles[i+1].length-1]);
+                    let index= j==0?0:aisles[i+1].length-1;
+                    aisles[i][j].addEdge(aisles[i+1][index]);
                 }
             }
 
