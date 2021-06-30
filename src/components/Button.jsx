@@ -3,17 +3,16 @@ import styled from 'styled-components';
 
 const Costgo = styled.button`
   background-color: #E31837;
-  margin-left: 100px;
-  margin-right: 100px;
-  margin-top: 40px;
+  margin-left: 7%;
+  margin-right: 7%;
+  margin-top: 25px;
   border-radius: 20px;
   border: none;
-  width: 643px;
 `;
 
 const Label = styled.p`
   color: white;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: bold;
 
   :hover {

@@ -6,6 +6,7 @@ const HeaderStyle = styled.div`
   position: relative;
   top: 0px;
   left: 0px;
+  height: 20vh;
   width: 100%;
   background-color: #091A45;
 `;
@@ -14,7 +15,7 @@ const LogoContainer = styled.img`
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 30%;
+  width: 20%;
   padding-top: 15px;
   padding-bottom: 15px;
 `;
