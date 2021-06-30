@@ -6,6 +6,7 @@ const HeaderStyle = styled.div`
   position: relative;
   top: 0px;
   left: 0px;
+  height: 20vh;
   width: 100%;
   background-color: #091A45;
 `;

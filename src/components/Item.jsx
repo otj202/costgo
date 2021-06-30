@@ -4,17 +4,17 @@ import styled from 'styled-components';
 const ItemBox = styled.div`
   background-color: #6D7FAB;
   border-radius: 20px;
-  margin-left: 40px;
-  margin-right: 40px;
-  margin-bottom: 30px;
+  margin-left: 70px;
+  margin-right: 70px;
+  margin-bottom: 20px;
 `;
 
 const ItemName = styled.p`
   color: white;
   text-align: center;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  font-size: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 25px;
 `;
 
 class Item extends Component {
