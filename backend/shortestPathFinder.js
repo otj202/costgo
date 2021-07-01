@@ -17,14 +17,18 @@ class ShortestPathFinder{
             let dists = this.dijkstras(curItem, items);
             nextItem = this.searchForShortestItem(dists)
 
-            let pathToNextItem = [nextItem];
             let curPathNode = nextItem;
+
+            let pathToNextItem = [curPathNode];
+            
+            //build path to next item backwards
             while(dists[curPathNode].parent !== curItem) {
                 curPathNode = dists[curPathNode].parent;
                 pathToNextItem.unshift(curPathNode);       
             }   
 
-            Array.prototype.push.apply(path, pathToNextItem)
+            //merge the whole path with the path to next item
+            Array.prototype.push.apply(path, pathToNextItem);
 
             curItem = nextItem;
 
