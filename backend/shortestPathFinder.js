@@ -46,9 +46,9 @@ class ShortestPathFinder{
         var minDistance = Number.MAX_VALUE; 
 
         for(let i = 0; i < items.length; i++){
-            if(dists[items[i]] < minDistance){
+            if(dists[items[i]].dist < minDistance){
                 item = items[i]; 
-                minDistance = dists[items[i]];
+                minDistance = dists[items[i]].dist;
             }
         }
         
