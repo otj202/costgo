@@ -42,9 +42,11 @@ class ShortestPathFinder{
         path.push("exit")
         return path;
     }
-    dijkstras(node,items){
 
+    dijkstras(startNode,items){
+        
     }
+
     searchForShortestItem(dists,items){
         var item; 
         var minDistance = Number.MAX_VALUE; 
