@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 const ContentStyle = styled.div`
   background-color: #091A45;
-  height: 80vh;
+  height: 85vh;
   width: 100vw;
   position: fixed;
 `;

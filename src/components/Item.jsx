@@ -16,6 +16,8 @@ const ItemBox = styled.div`
 
 const Column = styled.div`
   float: left;
+  width: 33%;
+  text-align: center;
 `;
 
 const ItemName = styled.p`
@@ -24,14 +26,12 @@ const ItemName = styled.p`
   padding-top: 20px;
   padding-bottom: 20px;
   font-size: 25px;
-
 `;
 
 const ItemImg = styled.img`
-  padding-left: 10px;
-  padding-right: 0px;
-  width: 30%;
-
+  padding-left: 0;
+  margin: 0;
+  width: 50%;
 `;
 
 class Item extends Component {
@@ -45,17 +45,17 @@ class Item extends Component {
     return (
       <ItemBox>
         <Column>
-          <ItemImg src={Apples}/>
+          <ItemImg src={this.props.src}/>
         </Column>
         <Column>
-        <ItemName>{this.props.name}</ItemName>
+          <ItemName>{this.props.name}</ItemName>
         </Column>
         <Column>
-        <label>
-          <Checkbox 
-            checked={this.state.checked}
-            onChange={this.handleCheckboxChange}/>
-            </label>
+          <label>
+            <Checkbox 
+              checked={this.state.checked}
+              onChange={this.handleCheckboxChange}/>
+          </label>
         </Column>
       </ItemBox>
     );

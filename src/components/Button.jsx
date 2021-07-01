@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { Link as ReactRouterDomLink } from "react-router-dom";
 import styled from 'styled-components';
 
-const Costgo = styled.button`
+const StyledButton = styled.button`
   background-color: #E31837;
   margin-left: 7%;
   margin-right: 7%;
@@ -10,7 +11,7 @@ const Costgo = styled.button`
   border: none;
 
   :hover {
-    background-color: red;
+    background-color: #8A1829;
   }
 `;
 
@@ -18,22 +19,41 @@ const Label = styled.p`
   color: white;
   font-size: 25px;
   font-weight: bold;
+  margin: 3vh 0 ;
+`;
+
+const Link = ({isActive, children, ...props}) => {
+  return (
+    <ReactRouterDomLink {...props}>
+      {children}
+    </ReactRouterDomLink>
+  );
+}
+
+const StyledLink = styled(Link)`
+  background-color: #E31837;
+  background-color: #E31837;
+  margin-left: 7%;
+  margin-right: 7%;
+  margin-top: 25px;
+  border-radius: 20px;
+  text-align: center;
+  text-decoration: none;
 
   :hover {
     cursor: pointer;
+    background-color: #8A1829;
   }
 `;
 
-class Button extends Component {
-  render() {
-    return (
-      <Costgo>
-        <Label>
-          costGO!
-        </Label>
-      </Costgo>
-    );
-  }
+function Button() {
+  return (
+    <StyledLink to="/path">
+      <Label>
+        costGO!
+      </Label>
+    </StyledLink>
+  );
 }
 
 export default Button;
