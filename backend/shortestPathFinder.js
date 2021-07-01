@@ -98,6 +98,7 @@ class ShortestPathFinder{
         let path = ["start"]; //array of strings of names of items
 
         while(items.length > 0) {
+            console.log("calling dikstra on ",curItem);
             let dists = this.dijkstras(curItem, items);
             let nextItem = this.searchForShortestItem(dists,items);
             let pathToNextItem = [nextItem];
@@ -111,15 +112,15 @@ class ShortestPathFinder{
             //merge the whole path with the path to next item
             Array.prototype.push.apply(path, pathToNextItem);
 
-            curItem = nextItem;
+            curItem = this.map[nextItem];
 
             //remove current item from items
-            const index = items.indexOf(curItem);
+            const index = items.indexOf(curItem.name);
             if (index > -1) {
                 items.splice(index, 1);
             }
         }
-
+        path.push("bottomAisle"+this.map[path[path.length - 1]].aisle);
         path.push("exit")
         return path;
     }
@@ -159,5 +160,5 @@ class ShortestPathFinder{
     }
 }
 let p = new ShortestPathFinder();
-let ret = p.getShortestPath(["Juices"]);
+let ret = p.getShortestPath(["Juices","Coffee","Tea"]);
 console.log(ret);
