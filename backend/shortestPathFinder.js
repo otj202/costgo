@@ -8,10 +8,10 @@ class ShortestPathFinder{
     getShortestPath(items){
         
     }
-    dijkstras(node){
+    dijkstras(node,items){
 
     }
-    searchForSortestItem(dists){
+    searchForShortestItem(dists,items){
 
     }
 }
