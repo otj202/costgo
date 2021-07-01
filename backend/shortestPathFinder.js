@@ -46,7 +46,17 @@ class ShortestPathFinder{
 
     }
     searchForShortestItem(dists,items){
+        var item; 
+        var minDistance = Number.MAX_VALUE; 
 
+        for(let i = 0; i < items.length; i++){
+            if(dists[items[i]].dist < minDistance){
+                item = items[i]; 
+                minDistance = dists[items[i]].dist;
+            }
+        }
+        
+        return item;
     }
 }
 let p = new ShortestPathFinder();
