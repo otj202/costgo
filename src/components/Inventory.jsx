@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import Item from './Item.jsx';
 import styled from 'styled-components';
+import data from '../data/map.json';
 
 import apples from '../assets/Apples.png';
 import oranges from '../assets/Oranges.png';
+import baby from '../assets/Baby.png';
+import beans from '../assets/Beans.png';
+import bread from '../assets/Bread.png';
+import candy from '../assets/Candy.png';
 
 const Container = styled.div`
   background-color: #364C83;
@@ -26,10 +31,10 @@ class Inventory extends Component {
     return (
       <Container>
         <Title>Inventory</Title>
-        <Item name="Apples" src={apples}/>
-        <Item name="Oranges" src={oranges}/>
-        <Item name="Oranges" src={oranges}/>
-        <Item name="Oranges" src={oranges}/>
+        <Item name={data.BabyProducts.name} src={baby}/>
+        <Item name={data.Beans.name} src={beans}/>
+        <Item name={data.Bread.name} src={bread}/>
+        <Item name={data.Candy.name} src={candy}/>
       </Container>
     );
   }
