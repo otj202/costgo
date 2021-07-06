@@ -27,9 +27,9 @@ class Node{
 }
 
 function getCoords(node, index, length){
-    let shelf_width=10;
-    let aisle_width=10;
-    let shelf_length=10;
+    let shelf_width=40;
+    let aisle_width=100;
+    let shelf_length=180;
     var x_pos = (shelf_width+aisle_width)*(node.aisle);
     var y_pos = 30; 
 
@@ -123,7 +123,7 @@ function storeNodes(aisles) {
     startNode = new Node("start", 0, null, "top");
     startNode.setXY(0,0);
     exitNode = new Node("exit", 0, null, "bottom");
-    exitNode.setXY(0,50);
+    exitNode.setXY(0,250);
 
     for(var i = 0; i < aisles.length; i++) {
         startNode.addEdge(aisles[i][0]);
