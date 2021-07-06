@@ -6,6 +6,7 @@ class Node{
         this.side=side;
         this.x=null;
         this.y=null;
+        this.image=null;
         this.neighbors={};
     }
     setXY(x,y){
