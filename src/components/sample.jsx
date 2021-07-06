@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import map from '../map.js'
+import tests from '../test.js'
 
 console.log(map["Chips"]);
 
@@ -57,7 +58,7 @@ componentDidMount(){
                 let curr_node = root.name;
                 let next_node = node; 
         
-                ctx.strokeStyle = 'blue';
+                ctx.strokeStyle = '#add8e6';
                 ctx.lineWidth = 2;
             
                 // draw a red line
@@ -74,16 +75,41 @@ componentDidMount(){
         }
     } 
 
-    depthSearch(map["start"]);
+    //depthSearch(map["start"]);
 
+    function draw_path(array){
 
+        for(let i = 0; i < array.length; i++){
+            
+            if((i+1)!= array.length){
+                let curr_node = map[array[i]];
+                let next_node = map[array[i+1]]; 
+    
+                ctx.strokeStyle = 'green';
+                ctx.lineWidth = 3;
+            
+                // draw a red line
+                ctx.beginPath();
+                ctx.moveTo(curr_node.x, curr_node.y);
+                ctx.lineTo(next_node.x, next_node.y);
+                ctx.stroke();
+    
+            }
+    
+    
+        }
+    } 
+
+    var pos = 1; //Tests stored in an array, there are a total of 4 tests
+    document.getElementById("items").innerHTML= tests[pos].items;
+    draw_path(tests[pos].path_final);    
 
 }
   render() {
     return (
         <div>
-            <h1>Hellow World</h1> 
-            <canvas id="canvas" height="400" width="1500"></canvas>
+            <h1 id="items">Hellow World</h1> 
+            <canvas id="canvas" height="400" width="1600"></canvas>
         </div>
     );
   }
