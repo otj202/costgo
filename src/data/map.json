@@ -67,13 +67,13 @@
       "neighbors": {
           "topAisle1": 20,
           "topAisle3": 20,
-          "ChildSupplements": 11.180339887498949,
+          "Child Supplements": 11.180339887498949,
           "BabyProducts": 11.180339887498949,
           "bottomAisle2": 20,
           "start": 43.01162633521314
       }
   },
-  "ChildSupplements": {
+  "Child Supplements": {
       "connectorType": null,
       "name": "Child Supplements",
       "img": 2,
@@ -97,7 +97,7 @@
       "y": 35,
       "neighbors": {
           "topAisle2": 11.180339887498949,
-          "ChildSupplements": 10,
+          "Child Supplements": 10,
           "bottomAisle2": 11.180339887498949
       }
   },
@@ -112,7 +112,7 @@
           "bottomAisle1": 20,
           "bottomAisle3": 20,
           "topAisle2": 20,
-          "ChildSupplements": 11.180339887498949,
+          "Child Supplements": 11.180339887498949,
           "BabyProducts": 11.180339887498949,
           "exit": 35.35533905932738
       }

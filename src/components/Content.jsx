@@ -37,6 +37,17 @@ const Instructions = styled.p`
 `;
 
 class Content extends Component {
+  constructor() {
+    super()
+    this.state = {
+      checkedItems: []
+    }
+  }
+
+  onItemChanged = (name, value) => {
+    this.state.checkedItems[name] = value
+  }
+
   render() {
     return (
       <ContentStyle>
@@ -53,8 +64,8 @@ class Content extends Component {
           </Instructions>
           </Column>
           <Column>
-            <Inventory />
-            <Button />
+            <Inventory onItemChanged={this.onItemChanged}/>
+            <Button checkedItems={this.state.checkedItems}/>
           </Column>
         </ Row>
       </ContentStyle>

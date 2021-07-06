@@ -1,3 +1,5 @@
+import map from './map.json';
+
 class QElement{
     constructor(element,priority){
         this.element=element;
@@ -84,7 +86,7 @@ class PriorityQueue{
 }
 
 class ShortestPathFinder{
-    constructor(map){
+    constructor(){
         this.map=map;
     }
 
@@ -159,9 +161,9 @@ function equals(list1,list2){
     if(list1.length != list2.length){
         return false;
     }
-    for(i=0;i<list1.length;i++){
+    for(let i=0;i<list1.length;i++){
         if(list1[i] != list2[i]){
-            return False;
+            return false;
         }
     }
     return true;
@@ -237,3 +239,4 @@ function testShortestPathFinder(){
     }
 }
 //testShortestPathFinder();
+export default ShortestPathFinder;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link as ReactRouterDomLink } from "react-router-dom";
 import styled from 'styled-components';
+import ShortestPathFinder from "./shortestPathFinder.js";
 
 const ContentStyle = styled.div`
   background-color: #091A45;
@@ -66,6 +67,13 @@ const StyledLink = styled(Link)`
 
 class Path extends Component {
   render() {
+    let checked = []
+    for(const [key, value] of Object.entries(this.props.location.state.checkedItems)) {
+      if(value) {
+        checked.push(key)
+      }
+    }
+    let path = new ShortestPathFinder().getShortestPath(checked)
     return (
       <ContentStyle>
         <Title>Your quickest path:</Title>

@@ -36,7 +36,7 @@ class Inventory extends Component {
       <Container>
         <Title>Inventory</Title>
         { arr.map(item =>
-         <Item key={item.name} name={item.name} img={images[item.img].src}/>
+         <Item key={item.name} name={item.name} img={images[item.img].src} onItemChanged={this.props.onItemChanged}/>
           ) 
         }
       </Container>

@@ -38,6 +38,7 @@ class Item extends Component {
 
   handleCheckboxChange = event => {
     this.setState({ checked: event.target.checked })
+    this.props.onItemChanged(this.props.name, event.target.checked)
   }
 
   render() {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link as ReactRouterDomLink } from "react-router-dom";
 import styled from 'styled-components';
 
@@ -33,14 +33,19 @@ const Label = styled.p`
   margin: 3vh 0 ;
 `;
 
-function Button() {
-  return (
-    <StyledLink to="/path">
+class Button extends Component {
+  render() {
+    return (
+    <StyledLink to={{
+      pathname:"/path", 
+      state:{ checkedItems:this.props.checkedItems }
+    }}>
       <Label>
         costGO!
       </Label>
     </StyledLink>
   );
+  }
 }
 
 export default Button;
