@@ -86,7 +86,6 @@ class PriorityQueue{
 class ShortestPathFinder{
     constructor(){
         let jason=require("./map.json");
-        console.log("the json object:",jason);
         this.map=jason;
     }
 
@@ -98,7 +97,7 @@ class ShortestPathFinder{
         let path = ["start"]; //array of strings of names of items
 
         while(items.length > 0) {
-            let dists = this.dijkstras(curItem, items);
+            let dists = this.dijkstras(curItem);
             let nextItem = this.searchForShortestItem(dists,items);
             let pathToNextItem = [nextItem];
             let curPathNode = nextItem;
@@ -170,11 +169,61 @@ function equals(list1,list2){
 }
 function testShortestPathFinder(){
     let tests = [
-        {items:["Juices","Bread"],shortestPath:[]},
-        {items:["Chips","Nuts","Candy","CannedFish"],shortestPath:[]},
-        {items:["ProteinPowder","Tea","Coffee","Oats","DriedFruit"],shortestPath:[]},
-        {items:["Olives","Beans","Oil","Rice","Tea","NutBars"],shortestPath:[]},
-        {items:["BabyProducts","ChildSupplements","Condiments","Coffee","Sugar","PeanutButter","Cereal"],shortestPath:[]}
+        {items:["Juices","Bread"],shortestPath:[
+            'start',
+            'topAisle9',
+            'Bread',
+            'bottomAisle9',
+            'bottomAisle10',
+            'Juices',
+            'bottomAisle10',
+            'exit'
+          ]},
+        {items:["Chips","Nuts","Candy","CannedFish"],shortestPath:[
+        'start','topAisle4',
+        'Candy',        'bottomAisle4',
+        'bottomAisle5', 'Chips',
+        'Nuts',         'topAisle5',
+        'topAisle6',    'topAisle7',
+        'CannedFish',   'bottomAisle7',
+        'exit']},
+        {items:["ProteinPowder","Tea","Coffee","Oats","DriedFruit"],shortestPath:[  
+        'start',         'topAisle3',
+        'ProteinPowder', 'bottomAisle3',
+        'bottomAisle4',  'bottomAisle5',
+        'bottomAisle6',  'DriedFruit',
+        'topAisle6',     'topAisle7',
+        'topAisle8',     'topAisle9',
+        'topAisle10',    'Oats',
+        'topAisle10',    'topAisle11',
+        'Tea',           'Coffee',
+        'bottomAisle11', 'exit']},
+        {items:["Olives","Beans","Oil","Rice","Tea","NutBars"],shortestPath:[
+            'start',         'topAisle3',
+            'NutBars',       'bottomAisle3',
+            'bottomAisle4',  'bottomAisle5',
+            'bottomAisle6',  'Rice',
+            'bottomAisle6',  'bottomAisle7',
+            'Olives',        'Beans',
+            'topAisle7',     'topAisle8',
+            'Oil',           'topAisle8',
+            'topAisle9',     'topAisle10',
+            'topAisle11',    'Tea',
+            'bottomAisle11', 'exit']},
+        {items:["BabyProducts","ChildSupplements","Condiments","Coffee","Sugar","PeanutButter","Cereal"],shortestPath:[
+            'start',         'topAisle2',
+            'BabyProducts',  'ChildSupplements',
+            'bottomAisle2',  'bottomAisle3',
+            'bottomAisle4',  'bottomAisle5',
+            'bottomAisle6',  'bottomAisle7',
+            'Condiments',    'bottomAisle7',
+            'bottomAisle8',  'Sugar',
+            'bottomAisle8',  'bottomAisle9',
+            'Cereal',        'bottomAisle9',
+            'bottomAisle10', 'PeanutButter',
+            'bottomAisle10', 'bottomAisle11',
+            'Coffee',        'bottomAisle11',
+            'exit']}
     ]
     let spf = new ShortestPathFinder();
     for (const test of tests){
