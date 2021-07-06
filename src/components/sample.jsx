@@ -72,7 +72,10 @@ componentDidMount(){
 
             }
         }
-    }
+    } 
+
+    depthSearch(map["start"]);
+
 
 
 }
