@@ -100,7 +100,7 @@ componentDidMount(){
         }
     } 
 
-    var pos = 1;
+    var pos = 1; //Tests stored in an array, there are a total of 4 tests
     document.getElementById("items").innerHTML= tests[pos].items;
     draw_path(tests[pos].path_final);    
 
