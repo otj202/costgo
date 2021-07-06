@@ -98,7 +98,6 @@ class ShortestPathFinder{
         let path = ["start"]; //array of strings of names of items
 
         while(items.length > 0) {
-            console.log("calling dikstra on ",curItem);
             let dists = this.dijkstras(curItem, items);
             let nextItem = this.searchForShortestItem(dists,items);
             let pathToNextItem = [nextItem];
@@ -106,7 +105,6 @@ class ShortestPathFinder{
             while(dists[curPathNode].parent !== curItem.name) {
                 curPathNode = dists[curPathNode].parent;
                 pathToNextItem.unshift(curPathNode);       
-                console.log("set curPathNode to ",curPathNode);
             }   
 
             Array.prototype.push.apply(path, pathToNextItem)
@@ -123,14 +121,13 @@ class ShortestPathFinder{
         path.push("exit")
         return path;
     }
-    dijkstras(node,items){
+    dijkstras(node){
         let dists={};
         dists[node.name]={dist:0,parent:null};
         let pq= new PriorityQueue();
         pq.enqueue(node.name,0);
         while (!pq.isEmpty()){
             let dq=pq.dequeue();
-            console.log("dq is ", dq);
             let curr=this.map[dq];
             for(const n of Object.keys(curr.neighbors)){
                 if(dists[n] === undefined || dists[n].dist > dists[curr.name].dist + curr.neighbors[n])
@@ -159,6 +156,36 @@ class ShortestPathFinder{
         return item;
     }
 }
-let p = new ShortestPathFinder();
-let ret = p.getShortestPath(["Juices","Coffee","Tea"]);
-console.log(ret);
+
+function equals(list1,list2){
+    if(list1.length != list2.length){
+        return false;
+    }
+    for(i=0;i<list1.length;i++){
+        if(list1[i] != list2[i]){
+            return False;
+        }
+    }
+    return true;
+}
+function testShortestPathFinder(){
+    let tests = [
+        {items:["Juices","Bread"],shortestPath:[]},
+        {items:["Chips","Nuts","Candy","CannedFish"],shortestPath:[]},
+        {items:["ProteinPowder","Tea","Coffee","Oats","DriedFruit"],shortestPath:[]},
+        {items:["Olives","Beans","Oil","Rice","Tea","NutBars"],shortestPath:[]},
+        {items:["BabyProducts","ChildSupplements","Condiments","Coffee","Sugar","PeanutButter","Cereal"],shortestPath:[]}
+    ]
+    let spf = new ShortestPathFinder();
+    for (const test of tests){
+        let path=spf.getShortestPath(test.items);
+        console.log("found the path:",path);
+        if(!equals(path,test.shortestPath)){
+            console.log("failed this test!:",test);
+        } 
+        else{
+            console.log("test passed");
+        }
+    }
+}
+testShortestPathFinder();
