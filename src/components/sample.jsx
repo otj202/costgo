@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import ShortestPathFinder from "./shortestPathFinder.js";
 
 import map from '../map.js'
 import tests from '../test.js'
+
+
+
 
 console.log(map["Chips"]);
 
@@ -103,6 +107,9 @@ componentDidMount(){
     var pos = 1; //Tests stored in an array, there are a total of 4 tests
     document.getElementById("items").innerHTML= tests[pos].items;
     draw_path(tests[pos].path_final);    
+    //let path = new ShortestPathFinder().getShortestPath(tests[pos].items);
+    //draw_path(path);
+
 
 }
   render() {
