@@ -1,110 +1,108 @@
 {
-    "Aisle1": {
-       "left": [
-          "supplements"
-       ],
-       "right": [
-          "Vitamins"
-       ]
-    },
-    "Aisle2": {
-       "left": [
-          "ChildSupplements"
-       ],
-       "right": [
-          "BabyProducts"
-       ]
-    },
-    "Aisle3": {
-       "left": [
-          "ProteinPowder"
-       ],
-       "right": [
-          "FruitBars",
-          "NutBars",
-          "SnackBars"
-       ]
-    },
-    "Aisle4": {
-       "left": [
-          "Cookies",
-          "Candy"
-       ],
-       "right": [
-          "Jerky",
-          "Crackers",
-          "Snacks"
-       ]
-    },
-    "Aisle5": {
-       "left": [
-          "Popcorn",
-          "Chips"
-       ],
-       "right": [
-          "Nuts"
-       ]
-    },
-    "Aisle6": {
-       "left": [
-          "Crackers",
-          "DriedFruit"
-       ],
-       "right": [
-          "Soup",
-          "Noodles",
-          "Rice",
-          "Beans"
-       ]
-    },
-    "Aisle7": {
-       "left": [
-          "Beans",
-          "Olives",
-          "Sauce"
-       ],
-       "right": [
-          "CannedFish",
-          "Condiments"
-       ]
-    },
-    "Aisle8": {
-       "left": [
-          "Flour",
-          "Sugar",
-          "Spices"
-       ],
-       "right": [
-          "Oil"
-       ]
-    },
-    "Aisle9": {
-       "left": [
-          "Bread"
-       ],
-       "right": [
-          "Cereal"
-       ]
-    },
-    "Aisle10": {
-       "left": [
-          "Oats",
-          "Syrup",
-          "Jam",
-          "PeanutButter",
-          "Honey"
-       ],
-       "right": [
-          "Drinks",
-          "Juices"
-       ]
-    },
-    "Aisle11": {
-       "left": [
-          "Tea"
-       ],
-       "right": [
-          "Coffee"
-       ]
-    }
- }
+   "Aisle1": {
+      "left": [
+         "supplements"
+      ],
+      "right": [
+         "Vitamins"
+      ]
+   },
+   "Aisle2": {
+      "left": [
+         "ChildSupplements"
+      ],
+      "right": [
+         "BabyProducts"
+      ]
+   },
+   "Aisle3": {
+      "left": [
+         "ProteinPowder"
+      ],
+      "right": [
+         "FruitBars",
+         "NutBars",
+         "SnackBars"
+      ]
+   },
+   "Aisle4": {
+      "left": [
+         "Cookies",
+         "Candy"
+      ],
+      "right": [
+         "Jerky",
+         "Snacks"
+      ]
+   },
+   "Aisle5": {
+      "left": [
+         "Popcorn",
+         "Chips"
+      ],
+      "right": [
+         "Nuts"
+      ]
+   },
+   "Aisle6": {
+      "left": [
+         "Crackers",
+         "DriedFruit"
+      ],
+      "right": [
+         "Soup",
+         "Noodles",
+         "Rice"
+      ]
+   },
+   "Aisle7": {
+      "left": [
+         "Beans",
+         "Olives",
+         "Sauce"
+      ],
+      "right": [
+         "CannedFish",
+         "Condiments"
+      ]
+   },
+   "Aisle8": {
+      "left": [
+         "Flour",
+         "Sugar",
+         "Spices"
+      ],
+      "right": [
+         "Oil"
+      ]
+   },
+   "Aisle9": {
+      "left": [
+         "Bread"
+      ],
+      "right": [
+         "Cereal"
+      ]
+   },
+   "Aisle10": {
+      "left": [
+         "Oats",
+         "Syrup",
+         "Jam",
+         "PeanutButter",
+         "Honey"
+      ],
+      "right": [
+         "Drinks",
+         "Juices"
+      ]
+   },
+   "Aisle11": {
+      "left": [
+         "Tea"
+      ],
+      "right": [
+         "Coffee"
+      ]
+   }
+}

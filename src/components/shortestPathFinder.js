@@ -84,9 +84,8 @@ class PriorityQueue{
 }
 
 class ShortestPathFinder{
-    constructor(){
-        let jason=require("./map.json");
-        this.map=jason;
+    constructor(map){
+        this.map=map;
     }
 
     //@param items
@@ -106,8 +105,7 @@ class ShortestPathFinder{
                 pathToNextItem.unshift(curPathNode);       
             }   
 
-            //merge the whole path with the path to next item
-            Array.prototype.push.apply(path, pathToNextItem);
+            Array.prototype.push.apply(path, pathToNextItem)
 
             curItem = this.map[nextItem];
 
@@ -139,8 +137,9 @@ class ShortestPathFinder{
         }
         return dists;
         //in a loop, continually visit the closest unvisited node to root, relaxing all its neighbors.
-    }
 
+
+    }
     searchForShortestItem(dists,items){
         var item; 
         var minDistance = Number.MAX_VALUE; 
@@ -237,4 +236,4 @@ function testShortestPathFinder(){
         }
     }
 }
-testShortestPathFinder();
+//testShortestPathFinder();
