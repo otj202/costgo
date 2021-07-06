@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from './components/Header.jsx';
 import Content from './components/Content.jsx';
 import Path from './components/Path.jsx';
-import Graph from './components/Graph.jsx';
+import Graph from './components/sample.jsx';
 import './App.css';
 
 function App() {
