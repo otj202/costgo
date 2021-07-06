@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link as ReactRouterDomLink } from "react-router-dom";
 import styled from 'styled-components';
 import ShortestPathFinder from "./shortestPathFinder.js";
+import Graph from './sample.jsx';
 
 const ContentStyle = styled.div`
   background-color: #091A45;
@@ -78,7 +79,7 @@ class Path extends Component {
       <ContentStyle>
         <Title>Your quickest path:</Title>
         <Container>
-
+          <Graph path={path}></Graph>
         </Container>
         <Message>Thanks for shopping at Costco!</Message>
         <StyledLink to="/">Continue shopping</StyledLink>

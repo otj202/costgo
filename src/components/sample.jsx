@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ShortestPathFinder from "./shortestPathFinder.js";
 
-import map from '../map.js'
+import map from './map.json'
 import tests from '../test.js'
 
 
@@ -44,42 +44,10 @@ componentDidMount(){
             let x = map[key].x;
             let y = map[key].y;
             ctx.font = "8px Arial";
-            ctx.fillText(id_str.substring(0, 5), x, y);
+            //ctx.fillText(id_str.substring(0, 5), x, y);
         }
     }
 
-
-    function depthSearch(root){
-        //console.log(root);
-
-        visited_array[root.name] = true;
-        var neighbors = root.neighbors; 
-    
-        for (var node in neighbors) {
-            if (neighbors.hasOwnProperty(node)) {
-                
-                //console.log("Node "+node);
-                let curr_node = root.name;
-                let next_node = node; 
-        
-                ctx.strokeStyle = '#add8e6';
-                ctx.lineWidth = 2;
-            
-                // draw a red line
-                ctx.beginPath();
-                ctx.moveTo(map[curr_node].x, map[curr_node].y);
-                ctx.lineTo(map[next_node].x, map[next_node].y);
-                ctx.stroke();
-        
-                if(visited_array[node] == false){
-                    depthSearch(map[node]);
-                }
-
-            }
-        }
-    } 
-
-    //depthSearch(map["start"]);
 
     function draw_path(array){
 
@@ -89,10 +57,14 @@ componentDidMount(){
                 let curr_node = map[array[i]];
                 let next_node = map[array[i+1]]; 
     
-                ctx.strokeStyle = 'green';
+                ctx.strokeStyle = '#88F37F';
                 ctx.lineWidth = 3;
-            
+                
                 // draw a red line
+
+                ctx.font = "15px Arial";
+                ctx.fillText(i+1, curr_node.x, curr_node.y);
+
                 ctx.beginPath();
                 ctx.moveTo(curr_node.x, curr_node.y);
                 ctx.lineTo(next_node.x, next_node.y);
@@ -105,8 +77,8 @@ componentDidMount(){
     } 
 
     var pos = 1; //Tests stored in an array, there are a total of 4 tests
-    document.getElementById("items").innerHTML= tests[pos].items;
-    draw_path(tests[pos].path_final);    
+    //document.getElementById("items").innerHTML= tests[pos].items;
+    draw_path(this.props.path);    
     //let path = new ShortestPathFinder().getShortestPath(tests[pos].items);
     //draw_path(path);
 
@@ -115,7 +87,7 @@ componentDidMount(){
   render() {
     return (
         <div>
-            <h1 id="items">Hellow World</h1> 
+            <h1 id="items">Store Map</h1> 
             <canvas id="canvas" height="400" width="1600"></canvas>
         </div>
     );
