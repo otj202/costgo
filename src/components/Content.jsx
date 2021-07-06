@@ -4,6 +4,7 @@ import Button from './Button.jsx';
 import styled from 'styled-components';
 
 const ContentStyle = styled.div`
+  @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
   background-color: #091A45;
   height: 85vh;
   width: 100vw;
@@ -28,10 +29,11 @@ const Column = styled.div`
 
 const Instructions = styled.p`
   color: white;
-  margin-left: 100px;
-  margin-right: 100px;
+  margin-left: 15%;
+  margin-right: 15%;
   font-size: 30px;
   margin-top: 30px;
+  font-family: 'Nunito', sans-serif;
 `;
 
 class Content extends Component {
