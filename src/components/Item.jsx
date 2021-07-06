@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Checkbox from './Checkbox.jsx';
 import styled from 'styled-components';
-import Apples from '../assets/Apples.png'
 
 const ItemBox = styled.div`
   background-color: #6D7FAB;
@@ -45,7 +44,7 @@ class Item extends Component {
     return (
       <ItemBox>
         <Column>
-          <ItemImg src={this.props.src}/>
+          <ItemImg src={this.props.img}/>
         </Column>
         <Column>
           <ItemName>{this.props.name}</ItemName>
