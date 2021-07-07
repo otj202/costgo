@@ -1,0 +1,22 @@
+{
+    "Clothing":{
+       "column1":[
+           "shirts",
+            "pants",
+            "shorts",
+            "jackets"
+       ],
+       "column2":[
+           "skirts",
+           "dresses",
+           "tank tops",
+           "leggings"
+       ],
+       "column3":[
+           "shoes"
+       ],
+       "column4":[
+           "socks"
+       ]
+    }
+}

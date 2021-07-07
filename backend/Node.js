@@ -64,6 +64,7 @@ function getCoords(node, index, length){
 
 }
 var aislesJSON = require("./aisles.json");
+var sectionsJSON = require("./sections.json");
 function parseAisles(aisles) {
     let nodes=[];
     aisleNumber=1;
@@ -97,7 +98,94 @@ function parseAisles(aisles) {
 }
 let aisles= parseAisles(aislesJSON);
 assignNeighborsAndWeights(aisles);
-storeNodes(aisles);
+let sections = parseSections(sectionsJSON);
+assignSectionNeighborsAndWeights(sections,aisles);
+let iter=1;
+for(const section of sections){
+    console.log("--------------------------------------------\n\n\n section ",iter);
+    for(const node of section){
+        console.log(node.name,":",node.neighbors);
+    }
+    iter++;
+}
+storeNodes(aisles,sections);
+function getClothingCoords(node,column,length,index){
+    const ORIGIN = {x:0,y:250};
+    const COLUMN_WIDTH = 100;
+    const COLUMN_LENGTH = 180;
+    node.setXY(ORIGIN.x + COLUMN_WIDTH*(column - 1),ORIGIN.y + (index / length) * COLUMN_LENGTH );
+    console.log(node.name, " in column ",column,"with coords",node.x,node.y);
+}
+function parseClothingSection(clothing){
+    columnNums={"column1":1,"column2":2,"column3":3,"column4":4};
+    clothingNodes=[]
+    for(const column of Object.keys(clothing)){
+        let columnNodes = [];
+        let clothingInd=1;
+        let columnLength=clothing[column].length;
+        for (const item of clothing[column]){
+            node= new Node(item,null,null,null,null,null,null);
+            getClothingCoords(node,columnNums[column],columnLength,clothingInd++);
+            columnNodes.push(node);
+        }
+        clothingNodes.push(columnNodes);
+    }
+    return clothingNodes;
+}
+function parseSections(sectionsJSON){
+    let nodes=[];
+    nodes=nodes.concat(parseClothingSection(sectionsJSON["Clothing"]));
+    return nodes;
+}
+
+function assignSectionNeighborsAndWeights(sectionNodes,aisleNodes){
+    for(let i=0;i<sectionNodes.length;i++){
+        for(let a=0;a<aisleNodes.length;a++){
+            sectionNodes[i][0].addEdge(aisleNodes[a][aisleNodes[a].length - 1]);
+            aisleNodes[a][aisleNodes[a].length - 1].addEdge(sectionNodes[i][0]);
+        }
+        if(i<sectionNodes.length-1){
+            sectionNodes[i][0].addEdge(sectionNodes[i+1][0]);
+            sectionNodes[i+1][0].addEdge(sectionNodes[i][0]);
+        }
+        else{
+            break;
+        }
+        for(let j=0;j<sectionNodes[i].length;j++){
+            if(j < sectionNodes[i].length-1){
+                sectionNodes[i][j].addEdge(sectionNodes[i][j+1]);
+                sectionNodes[i][j+1].addEdge(sectionNodes[i][j]);
+            }
+            for(let k=0;k<sectionNodes[i+1].length;k++){
+                sectionNodes[i][j].addEdge(sectionNodes[i+1][k]);
+                sectionNodes[i+1][k].addEdge(sectionNodes[i][j]);
+            }            
+        }
+    }
+    //now connect first 3 nodes of column 2 to column 4, and to all bottom connectors but the first.
+    for (let i=0;i<sectionNodes[1].length;i++){
+        //to column 4
+        if(canGoDirectlyTo(sectionNodes[1][i],sectionNodes[3][0],sectionNodes[2][0],"over")){
+            sectionNodes[1][i].addEdge(sectionNodes[3][0]);
+            sectionNodes[3][0].addEdge(sectionNodes[1][i]);
+        }
+        //to bottom connectors
+        for(let j=0;j<aisleNodes.length;j++){
+            if(i===0 || canGoDirectlyTo(sectionNodes[1][i],aisleNodes[j][aisleNodes[j].length - 1],sectionNodes[1][i-1],"under")){
+                sectionNodes[1][i].addEdge(aisleNodes[j][aisleNodes[j].length - 1]);
+                aisleNodes[j][aisleNodes[j].length - 1].addEdge(sectionNodes[1][i]);
+            }
+        }
+    }
+}
+//can you go in a straight line from node to target while staying on the correct side of through?
+function canGoDirectlyTo(node,target,through,side){
+    let [xs,ys] = [node.x,node.y];
+    let [xf,yf] = [target.x,target.y];
+    let m = (ys - yf)/(xs - xf);
+    let b = (xs*yf - ys*xf)/(xs - xf);
+    return side==="under"? m*through.x + b > through.y:m*through.x + b < through.y;
+}
 
 function assignNeighborsAndWeights(aisles) {
     for(var i = 0; i < aisles.length; i++) {
@@ -124,32 +212,39 @@ function assignNeighborsAndWeights(aisles) {
         }
     }
 }
-
-function storeNodes(aisles) {
+function storeNodes(aisles,sections) {
     startNode = new Node("start", 0, null, "top");
     startNode.setXY(0,0);
     exitNode = new Node("exit", 0, null, "bottom");
-    exitNode.setXY(0,250);
+    exitNode.setXY(0,450);
 
     for(var i = 0; i < aisles.length; i++) {
         startNode.addEdge(aisles[i][0]);
         aisles[i][0].addEdge(startNode);
-        exitNode.addEdge(aisles[i][aisles[i].length-1]);
-        aisles[i][aisles[i].length-1].addEdge(exitNode);
+        // we no longer add edges to the exit because all bottomAisles are BLOCKED by the clothing section
     }
 
+    for(var i = 0; i < sections.length;i++){
+        sections[i][sections[i].length - 1].addEdge(exitNode);
+        exitNode.addEdge(sections[i][sections[i].length - 1]);
+    }
+    
     var nodesDict = {};
     for(var i = 0; i < aisles.length; i++) {
         for(var j = 0; j < aisles[i].length; j++) {
             nodesDict[aisles[i][j].name] = aisles[i][j];
         }
     }
-
+    for (const section of sections){
+        for(const item of section){
+            nodesDict[item.name]=item;
+        }
+    }
     nodesDict[startNode.name] = startNode;
     nodesDict[exitNode.name] = exitNode;
 
     var fs = require('fs');
-    fs.writeFile("./backend/map.json", JSON.stringify(nodesDict), function(err, result) {
+    fs.writeFile("map.json", JSON.stringify(nodesDict), function(err, result) {
         if(err) console.log('error', err);
       });
 }

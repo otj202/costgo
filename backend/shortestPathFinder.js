@@ -117,8 +117,17 @@ class ShortestPathFinder{
                 items.splice(index, 1);
             }
         }
-        path.push("bottomAisle"+this.map[path[path.length - 1]].aisle);
-        path.push("exit")
+        let finalStopName="bottomAisle"+this.map[path[path.length - 1]].aisle;
+        path.push(finalStopName);
+        let dists=this.dijkstras(this.map[finalStopName]);
+        let path2exit=["exit"];
+        let parentName = dists["exit"].parent;
+        console.log("above the loop");
+        while (parentName !== finalStopName){
+            path2exit.unshift(parentName);
+            parentName=dists[parentName].parent;
+        }
+        path=path.concat(path2exit);
         return path;
     }
     dijkstras(node){
@@ -147,7 +156,7 @@ class ShortestPathFinder{
 
         for(let i = 0; i < items.length; i++){
             if(dists[items[i]].dist < minDistance){
-                item = items[i];           
+                item = items[i]; 
                 minDistance = dists[items[i]].dist;
             }
         }
@@ -162,7 +171,7 @@ function equals(list1,list2){
     }
     for(i=0;i<list1.length;i++){
         if(list1[i] != list2[i]){
-            return false;
+            return False;
         }
     }
     return true;
@@ -177,6 +186,7 @@ function testShortestPathFinder(){
             'bottomAisle10',
             'Juices',
             'bottomAisle10',
+            'leggings',
             'exit'
           ]},
         {items:["Chips","Nuts","Candy","Canned Fish"],shortestPath:[
@@ -186,7 +196,7 @@ function testShortestPathFinder(){
         'Nuts',         'topAisle5',
         'topAisle6',    'topAisle7',
         'Canned Fish',   'bottomAisle7',
-        'exit']},
+        'leggings','exit']},
         {items:["Protein Powder","Tea","Coffee","Oats","Dried Fruit"],shortestPath:[  
         'start',         'topAisle3',
         'Protein Powder', 'bottomAisle3',
@@ -197,7 +207,8 @@ function testShortestPathFinder(){
         'topAisle10',    'Oats',
         'topAisle10',    'topAisle11',
         'Tea',           'Coffee',
-        'bottomAisle11', 'exit']},
+        'bottomAisle11', 'leggings',
+        'exit']},
         {items:["Olives","Beans","Oil","Rice","Tea","Nut Bars"],shortestPath:[
             'start',         'topAisle3',
             'Nut Bars',       'bottomAisle3',
@@ -209,7 +220,8 @@ function testShortestPathFinder(){
             'Oil',           'topAisle8',
             'topAisle9',     'topAisle10',
             'topAisle11',    'Tea',
-            'bottomAisle11', 'exit']},
+            'bottomAisle11', 'leggings',
+            'exit']},
         {items:["Baby Products","Child Supplements","Condiments","Coffee","Sugar","Peanut Butter","Cereal"],shortestPath:[
             'start',         'topAisle2',
             'Baby Products',  'Child Supplements',
@@ -223,7 +235,7 @@ function testShortestPathFinder(){
             'bottomAisle10', 'Peanut Butter',
             'bottomAisle10', 'bottomAisle11',
             'Coffee',        'bottomAisle11',
-            'exit']}
+            'leggings','exit']}
     ]
     let spf = new ShortestPathFinder();
     for (const test of tests){
