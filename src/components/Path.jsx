@@ -3,7 +3,7 @@ import { Link as ReactRouterDomLink } from "react-router-dom";
 import ShortestPathFinder from "./shortestPathFinder.js";
 import Graph from './sample.jsx';
 import styled from 'styled-components';
-
+import Direction from './Direction.jsx';
 import carty from '../assets/whitecarty.png';
 
 const ContentStyle = styled.div`
