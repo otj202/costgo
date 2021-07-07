@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Link as ReactRouterDomLink } from "react-router-dom";
-import styled from 'styled-components';
 import ShortestPathFinder from "./shortestPathFinder.js";
-import Graph from './sample.jsx'; 
-import Direction from './Direction.jsx';
+import Graph from './sample.jsx';
+import styled from 'styled-components';
+
+import carty from '../assets/whitecarty.png';
 
 const ContentStyle = styled.div`
   background-color: #091A45;
@@ -13,9 +14,10 @@ const ContentStyle = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  font-family: 'Nunito', sans-serif;
 `;
 
-const Title = styled.h2`
+const Title = styled.h1`
   color: white;
   margin-left: 7%;
   margin-right: 7%;
@@ -67,6 +69,11 @@ const StyledLink = styled(Link)`
   }
 `;
 
+const Logo = styled.img`
+  width: 60px;
+  padding-right: 10px;
+`;
+
 class Path extends Component {
   render() {
     let checked = []
@@ -78,7 +85,7 @@ class Path extends Component {
     let path = new ShortestPathFinder().getShortestPath(checked)
     return (
       <ContentStyle>
-        <Title>Your quickest path:</Title>
+        <Title><Logo src={carty} />Your quickest path:</Title>
         <Container>
           <Graph path={path}></Graph>
           <Direction path={path}></Direction>

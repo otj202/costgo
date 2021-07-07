@@ -171,7 +171,7 @@ function equals(list1,list2){
     }
     for(i=0;i<list1.length;i++){
         if(list1[i] != list2[i]){
-            return False;
+            return false;
         }
     }
     return true;
@@ -186,7 +186,7 @@ function testShortestPathFinder(){
             'bottomAisle10',
             'Juices',
             'bottomAisle10',
-            'leggings',
+            'Leggings',
             'exit'
           ]},
         {items:["Chips","Nuts","Candy","Canned Fish"],shortestPath:[
@@ -196,7 +196,7 @@ function testShortestPathFinder(){
         'Nuts',         'topAisle5',
         'topAisle6',    'topAisle7',
         'Canned Fish',   'bottomAisle7',
-        'leggings','exit']},
+        'Leggings','exit']},
         {items:["Protein Powder","Tea","Coffee","Oats","Dried Fruit"],shortestPath:[  
         'start',         'topAisle3',
         'Protein Powder', 'bottomAisle3',
@@ -207,7 +207,7 @@ function testShortestPathFinder(){
         'topAisle10',    'Oats',
         'topAisle10',    'topAisle11',
         'Tea',           'Coffee',
-        'bottomAisle11', 'leggings',
+        'bottomAisle11', 'Leggings',
         'exit']},
         {items:["Olives","Beans","Oil","Rice","Tea","Nut Bars"],shortestPath:[
             'start',         'topAisle3',
@@ -220,7 +220,7 @@ function testShortestPathFinder(){
             'Oil',           'topAisle8',
             'topAisle9',     'topAisle10',
             'topAisle11',    'Tea',
-            'bottomAisle11', 'leggings',
+            'bottomAisle11', 'Leggings',
             'exit']},
         {items:["Baby Products","Child Supplements","Condiments","Coffee","Sugar","Peanut Butter","Cereal"],shortestPath:[
             'start',         'topAisle2',
@@ -235,7 +235,17 @@ function testShortestPathFinder(){
             'bottomAisle10', 'Peanut Butter',
             'bottomAisle10', 'bottomAisle11',
             'Coffee',        'bottomAisle11',
-            'leggings','exit']}
+            'Leggings','exit']},
+        {items:["Baby Products","Vitamins"],shortestPath:[ 
+            'start',
+            'topAisle1',
+            'Vitamins',
+            'topAisle1',
+            'topAisle2',
+            'Baby Products',
+            'bottomAisle2',
+            'Jackets',
+            'exit']}
     ]
     let spf = new ShortestPathFinder();
     for (const test of tests){

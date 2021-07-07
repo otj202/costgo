@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link as ReactRouterDomLink } from "react-router-dom";
 import styled from 'styled-components';
 
+import carty from '../assets/CostGObtn.png';
+
 const Link = ({isActive, children, ...props}) => {
   return (
     <ReactRouterDomLink {...props}>
@@ -26,11 +28,9 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const Label = styled.p`
-  color: white;
-  font-size: 25px;
-  font-weight: bold;
-  margin: 3vh 0 ;
+const Logo = styled.img`
+  height: 70px;
+  margin: 2.5vh 0 ;
 `;
 
 class Button extends Component {
@@ -40,9 +40,7 @@ class Button extends Component {
       pathname:"/path", 
       state:{ checkedItems:this.props.checkedItems }
     }}>
-      <Label>
-        costGO!
-      </Label>
+      <Logo src={carty}/>
     </StyledLink>
   );
   }
