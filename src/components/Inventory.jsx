@@ -21,6 +21,7 @@ const Title = styled.h1`
   padding-top: 2%;
   padding-left: 15%;
   font-family: 'Nunito', sans-serif;
+  font-weight: 600;
 `;
 
 const Section = styled.h3`
