@@ -3,6 +3,7 @@ import Header from './components/Header.jsx';
 import Content from './components/Content.jsx';
 import Path from './components/Path.jsx';
 import Graph from './components/sample.jsx';
+import Error from './components/Error.jsx';
 import './App.css';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
           <Route exact path="/" component={Content}></Route>
           <Route path="/path" component={Path}></Route>
           <Route path="/graph" component={Graph}></Route>
+          <Route path="/error" component={Error}></Route>
         </Switch>
       </Router>
     </>

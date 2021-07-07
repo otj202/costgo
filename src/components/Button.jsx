@@ -14,7 +14,6 @@ const Link = ({isActive, children, ...props}) => {
 
 const StyledLink = styled(Link)`
   background-color: #E31837;
-  background-color: #E31837;
   margin-left: 7%;
   margin-right: 7%;
   margin-top: 25px;
@@ -53,7 +52,7 @@ class Button extends Component {
       )
     }
     return(
-      <StyledLink to="" onClick={this.handleEmptyCart}>
+      <StyledLink to="/error" onClick={this.handleEmptyCart}>
         <Logo src={carty}/>
       </StyledLink>
     )

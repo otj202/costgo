@@ -8,9 +8,10 @@ import carty from '../assets/whitecarty.png';
 
 const ContentStyle = styled.div`
   background-color: #091A45;
-  height: 85vh;
+  //height: 85vh;
+  overflow: scroll;
   width: 100vw;
-  position: fixed;
+  //position: fixed;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -24,6 +25,8 @@ const Title = styled.h1`
   margin-top: 0;
   margin-bottom: 2px;
   padding: 0;
+  display: flex;
+  align-items: center;
 `;
 
 const Container = styled.div`
@@ -31,6 +34,8 @@ const Container = styled.div`
   border-radius: 20px;
   margin-left: 7%;
   margin-right: 7%;
+  margin-bottom: 50px;
+  margin-top: 10px;
   height: 60vh;
   overflow: scroll;
 `;
@@ -38,9 +43,10 @@ const Container = styled.div`
 const Message = styled.p`
   color: white;
   padding: 0;
-  margin: 0;
+  margin: 20px;
   text-align: center;
-  font-size: 20px;
+  font-size: 30px;
+  font-style: italic;
 `;
 
 const Link = ({isActive, children, ...props}) => {
@@ -53,15 +59,15 @@ const Link = ({isActive, children, ...props}) => {
 
 const StyledLink = styled(Link)`
   background-color: #E31837;
-  background-color: #E31837;
   margin-left: 43%;
   margin-right: 43%;
+  margin-bottom: 40px;
   padding-top: 7px;
   padding-bottom: 7px;
   border-radius: 20px;
   text-align: center;
   text-decoration: none;
-  color: white;
+  color: #091A45;
 
   :hover {
     cursor: pointer;
@@ -85,11 +91,12 @@ class Path extends Component {
     let path = new ShortestPathFinder().getShortestPath(checked)
     return (
       <ContentStyle>
-        <Title><Logo src={carty} />Your quickest path:</Title>
+        <Title><Logo src={carty} />Your personalized map:</Title>
         <Container>
           <Graph path={path}></Graph>
-          <Direction path={path}></Direction>
         </Container>
+        <Title><Logo src={carty} />Your personalized instructions:</Title>
+        <Direction path={path}></Direction>
         <Message>Thanks for shopping at Costco!</Message>
         <StyledLink to="/">Continue shopping</StyledLink>
       </ContentStyle>
