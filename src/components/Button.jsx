@@ -41,7 +41,6 @@ class Button extends Component {
   }
 
   renderButton = () => {
-    console.log(this.props.checkedItems)
     if(Object.values(this.props.checkedItems).includes(true)) {
       return(
         <StyledLink to={{

@@ -61,7 +61,6 @@ componentDidMount(){
             let x = map[key].x;
             let y = map[key].y;
 
-
             ctx.save();
             ctx.translate(x, y);
 
@@ -121,7 +120,7 @@ componentDidMount(){
   render() {
     return (
         <Container>
-            <canvas  id="canvas" width="1600" height="400"></canvas>
+            <canvas  id="canvas" width="1600" height="500"></canvas>
         </Container>
     );
   }

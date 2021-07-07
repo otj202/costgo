@@ -112,7 +112,7 @@ for(const section of sections){
 }
 function getClothingCoords(node,column,length,index){
     console.log("node is",node,"column is ",column,"length is ",length,"index is ",index);
-    const ORIGIN = {x:0,y:250};
+    const ORIGIN = {x:10,y:250};
     const COLUMN_WIDTH = 100;
     const COLUMN_LENGTH = 180;
     node.setXY(ORIGIN.x + COLUMN_WIDTH*(column - 1),ORIGIN.y + (index / length) * COLUMN_LENGTH );
@@ -220,9 +220,9 @@ function assignNeighborsAndWeights(aisles) {
 }
 function storeNodes(aisles,sections) {
     startNode = new Node("start", 0, null, "top");
-    startNode.setXY(0,0);
+    startNode.setXY(10,0);
     exitNode = new Node("exit", 0, null, "bottom");
-    exitNode.setXY(0,450);
+    exitNode.setXY(10,500);
 
     for(var i = 0; i < aisles.length; i++) {
         startNode.addEdge(aisles[i][0]);
