@@ -73,7 +73,11 @@ class Content extends Component {
   }
 
   onItemChanged = (name, value) => {
-    this.state.checkedItems[name] = value
+    let changedItems = this.state.checkedItems
+    changedItems[name] = value
+    this.setState({
+      checkedItems: changedItems
+    })
   }
 
   render() {
