@@ -1,4 +1,5 @@
 import map from '../data/map.json';
+//var map=require("../data/map.json");
 class QElement{
     constructor(element,priority){
         this.element=element;
@@ -108,7 +109,6 @@ class ShortestPathFinder{
 
             //merge the whole path with the path to next item
             Array.prototype.push.apply(path, pathToNextItem);
-
             curItem = this.map[nextItem];
 
             //remove current item from items
@@ -117,13 +117,11 @@ class ShortestPathFinder{
                 items.splice(index, 1);
             }
         }
-        let finalStopName="bottomAisle"+this.map[path[path.length - 1]].aisle;
-        path.push(finalStopName);
-        let dists=this.dijkstras(this.map[finalStopName]);
+        let lastStop=this.map[path[path.length - 1]];
+        let dists=this.dijkstras(lastStop);
         let path2exit=["exit"];
         let parentName = dists["exit"].parent;
-        console.log("above the loop");
-        while (parentName !== finalStopName){
+        while (parentName !== lastStop.name){
             path2exit.unshift(parentName);
             parentName=dists[parentName].parent;
         }
@@ -245,7 +243,17 @@ function testShortestPathFinder(){
             'Baby Products',
             'bottomAisle2',
             'Jackets',
-            'exit']}
+            'exit']},
+        {items:["Shirts","Vitamins","Dresses"],shortestPath:[
+            'start',
+  'topAisle1',
+  'Vitamins',
+  'bottomAisle1',
+  'Shirts',
+  'Dresses',
+  'Jackets',
+  'exit']
+        }
     ]
     let spf = new ShortestPathFinder();
     for (const test of tests){
