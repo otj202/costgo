@@ -30,9 +30,9 @@ componentDidMount(){
     var total_aisle = 12;
     var position = 0;
 
-    var aisleWidth = 100;
-    var shelfWidth = 40;
-    var shelfLength = 180;
+    var aisleWidth = 120;
+    var shelfWidth = 80;
+    var shelfLength = 240;
 
     function drawAisle(aisleWidth, shelfWidth, shelfLength ){
         ctx.fillStyle = 'brown';
@@ -49,7 +49,7 @@ componentDidMount(){
 
     var visited_array = {};
 
-    var lineHeight = 15;
+    var lineHeight = 26;
     ctx.fillStyle = 'white';
     for (var key in map) {
         
@@ -68,13 +68,13 @@ componentDidMount(){
             ctx.rotate(90 * Math.PI / 180);
 
             ctx.textAlign = 'center';
-            ctx.font = "8px Arial";
+            ctx.font = "15px Arial";
             
             if(map[key].side == "r"){
-                ctx.fillText(id_str.substring(0, 6), 0, (lineHeight / 2)-8);
+                ctx.fillText(id_str, 0, (lineHeight / 2)-15, 800);
             }
             else{
-                ctx.fillText(id_str.substring(0, 6), 0, (lineHeight / 2)+0);
+                ctx.fillText(id_str, 0, (lineHeight / 2)+0, 800);
             }
 
             ctx.restore();
@@ -146,8 +146,8 @@ componentDidMount(){
     } 
 
     //drawSingleRack(10, 295);
-    drawRacks(100, 45, 10, 285, 3, 2 );
-    drawRacks(100, 45, 10, 420, 1, 4 );
+    drawRacks(100, 60, 10, 285, 3, 2 );
+    drawRacks(100, 60, 10, 420, 1, 4 );
     
 
 
@@ -155,7 +155,7 @@ componentDidMount(){
   render() {
     return (
         <Container>
-            <canvas  id="canvas" width="1600" height="600"></canvas>
+            <canvas  id="canvas" width="2200" height="600"></canvas>
         </Container>
     );
   }
