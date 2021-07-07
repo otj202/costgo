@@ -1,59 +1,59 @@
 {
     "Clothing":{
        "column1":{
-           "shirts":{
-               "category":"clothing",
+           "Shirts":{
+               "category":"Clothing",
                "rating":3.4,
                "price":10.99
            },
-            "pants":{
-               "category":"clothing",
+            "Pants":{
+               "category":"Clothing",
                "rating":4.4,
                "price":21.99
             },
-            "shorts":{
-               "category":"clothing",
+            "Shorts":{
+               "category":"Clothing",
                "rating":2.4,
                "price":6.99
             },
-            "jackets":{
-               "category":"clothing",
+            "Jackets":{
+               "category":"Clothing",
                "rating":3.1,
                "price":35.99
             }
        },
        "column2":{
-           "skirts":{
-            "category":"clothing",
+           "Skirts":{
+            "category":"Clothing",
             "rating":2.7,
             "price":11.99
            },
-           "dresses":{
-            "category":"clothing",
+           "Dresses":{
+            "category":"Clothing",
             "rating":4.4,
             "price":15.99
            },
-           "tank tops":{
-            "category":"clothing",
+           "Tank Tops":{
+            "category":"Clothing",
             "rating":1.9,
             "price":3.99
            },
-           "leggings":{
-            "category":"clothing",
+           "Leggings":{
+            "category":"Clothing",
             "rating":3.6,
             "price":6.99
            }
        },
        "column3":{
-           "shoes":{
-            "category":"clothing",
+           "Shoes":{
+            "category":"Footwear",
             "rating":4.8,
             "price":26.99
            }
        },
        "column4":{
-           "socks":{
-            "category":"clothing",
+           "Socks":{
+            "category":"Footwear",
             "rating":3.0,
             "price":8.99
            }
