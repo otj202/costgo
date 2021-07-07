@@ -34,14 +34,34 @@ const Logo = styled.img`
 `;
 
 class Button extends Component {
+  handleEmptyCart = () => {
+    return(
+      <h3>Please Select an Item</h3>
+    )
+  }
+
+  renderButton = () => {
+    console.log(this.props.checkedItems)
+    if(Object.values(this.props.checkedItems).includes(true)) {
+      return(
+        <StyledLink to={{
+          pathname:"/path", 
+          state:{ checkedItems:this.props.checkedItems }
+        }}>
+          <Logo src={carty}/>
+        </StyledLink>
+      )
+    }
+    return(
+      <StyledLink to="" onClick={this.handleEmptyCart}>
+        <Logo src={carty}/>
+      </StyledLink>
+    )
+  }
+
   render() {
     return (
-    <StyledLink to={{
-      pathname:"/path", 
-      state:{ checkedItems:this.props.checkedItems }
-    }}>
-      <Logo src={carty}/>
-    </StyledLink>
+      this.renderButton()
   );
   }
 }
