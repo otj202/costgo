@@ -52,7 +52,6 @@ class Item extends Component {
   }
 
   render() {
-    console.log(this.props.category)
     return (
       <ItemBox>
         <Column>
