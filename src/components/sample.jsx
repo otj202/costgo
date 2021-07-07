@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ShortestPathFinder from "./shortestPathFinder.js";
 
-import map from './map.json'
+import map from '../data/map.json'
 import tests from '../test.js'
 
 

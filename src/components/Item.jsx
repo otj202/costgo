@@ -42,6 +42,7 @@ class Item extends Component {
   }
 
   render() {
+    console.log(this.props.category)
     return (
       <ItemBox>
         <Column>
@@ -49,6 +50,11 @@ class Item extends Component {
         </Column>
         <Column>
           <ItemName>{this.props.name}</ItemName>
+          {this.props.category}
+          <br/>
+          {this.props.price}
+          <br/>
+          {this.props.rating}
         </Column>
         <Column>
           <label>

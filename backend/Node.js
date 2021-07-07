@@ -1,12 +1,14 @@
 class Node{
-    constructor(name,aisle,side,connectorType=null){
+    constructor(name,aisle,side, connectorType=null, category=null, rating=null, price=null){
         this.connectorType=connectorType;
         this.name=name;
         this.aisle=aisle;
         this.side=side;
+        this.category=category;
+        this.rating=rating;
+        this.price=price;
         this.x=null;
         this.y=null;
-        this.image=null;
         this.neighbors={};
     }
     setXY(x,y){
@@ -66,20 +68,24 @@ function parseAisles(aisles) {
     let nodes=[];
     aisleNumber=1;
     for (const [aisleName,aisleDict] of Object.entries(aisles)){       
-        let leftSideLength=aisleDict["left"].length;
-        let rightSideLength=aisleDict["right"].length;
+        let leftSideLength=Object.keys(aisleDict["left"]).length;
+        let rightSideLength=Object.keys(aisleDict["right"]).length;
         topConnector=new Node("top"+aisleName,aisleNumber,null,"top");
         getCoords(topConnector,0,rightSideLength);
         let aisleNodes = [topConnector];
-        for(i=0;i<leftSideLength;i++){
-            let node= new Node(aisleDict["left"][i],aisleNumber,"l");
+        let i = 0;
+        for(const [name, item] of Object.entries(aisleDict["left"])) {
+            let node= new Node(name,aisleNumber,"l", null, item["category"], item["rating"], item["price"]);
             getCoords(node,i,leftSideLength);
             aisleNodes.push(node);
+            i++;
         }
-        for(i=0;i<rightSideLength;i++){
-            let node= new Node(aisleDict["right"][i],aisleNumber,"r");
+        i = 0;
+        for(const [name, item] of Object.entries(aisleDict["right"])) {
+            let node= new Node(name,aisleNumber,"r", null, item["category"], item["rating"], item["price"]);
             getCoords(node,i,rightSideLength);
             aisleNodes.push(node);
+            i++;
         }
         bottomConnector=new Node("bottom"+aisleName,aisleNumber,null,"bottom");
         getCoords(bottomConnector,0,rightSideLength);
@@ -92,7 +98,6 @@ function parseAisles(aisles) {
 let aisles= parseAisles(aislesJSON);
 assignNeighborsAndWeights(aisles);
 storeNodes(aisles);
-console.log(aisles);
 
 function assignNeighborsAndWeights(aisles) {
     for(var i = 0; i < aisles.length; i++) {
@@ -144,7 +149,7 @@ function storeNodes(aisles) {
     nodesDict[exitNode.name] = exitNode;
 
     var fs = require('fs');
-    fs.writeFile("map.json", JSON.stringify(nodesDict), function(err, result) {
+    fs.writeFile("./backend/map.json", JSON.stringify(nodesDict), function(err, result) {
         if(err) console.log('error', err);
       });
 }

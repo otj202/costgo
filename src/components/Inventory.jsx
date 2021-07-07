@@ -26,7 +26,7 @@ class Inventory extends Component {
     var arr = [];
     Object.keys(data).forEach(function(key) {
       //console.log(key + ' - ' + data[key].connectorType);
-      console.log(key + ' - ' + data[key].name);
+      //console.log(key + ' - ' + data[key].rating);
       if (data[key].connectorType == null) {
         arr.push(data[key]);
       }
@@ -36,7 +36,7 @@ class Inventory extends Component {
       <Container>
         <Title>Inventory</Title>
         { arr.map(item =>
-         <Item key={item.name} name={item.name} img={images[item.img].src} onItemChanged={this.props.onItemChanged}/>
+         <Item key={item.name} name={item.name} img={images[item.name]} onItemChanged={this.props.onItemChanged} category={item.category} rating={item.rating} price={item.price}/>
           ) 
         }
       </Container>

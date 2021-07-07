@@ -1,4 +1,4 @@
-import map from './map.json';
+import map from '../data/map.json';
 
 class QElement{
     constructor(element,priority){

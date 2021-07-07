@@ -147,7 +147,7 @@ class ShortestPathFinder{
 
         for(let i = 0; i < items.length; i++){
             if(dists[items[i]].dist < minDistance){
-                item = items[i]; 
+                item = items[i];           
                 minDistance = dists[items[i]].dist;
             }
         }
@@ -162,7 +162,7 @@ function equals(list1,list2){
     }
     for(i=0;i<list1.length;i++){
         if(list1[i] != list2[i]){
-            return False;
+            return false;
         }
     }
     return true;
@@ -179,28 +179,28 @@ function testShortestPathFinder(){
             'bottomAisle10',
             'exit'
           ]},
-        {items:["Chips","Nuts","Candy","CannedFish"],shortestPath:[
+        {items:["Chips","Nuts","Candy","Canned Fish"],shortestPath:[
         'start','topAisle4',
         'Candy',        'bottomAisle4',
         'bottomAisle5', 'Chips',
         'Nuts',         'topAisle5',
         'topAisle6',    'topAisle7',
-        'CannedFish',   'bottomAisle7',
+        'Canned Fish',   'bottomAisle7',
         'exit']},
-        {items:["ProteinPowder","Tea","Coffee","Oats","DriedFruit"],shortestPath:[  
+        {items:["Protein Powder","Tea","Coffee","Oats","Dried Fruit"],shortestPath:[  
         'start',         'topAisle3',
-        'ProteinPowder', 'bottomAisle3',
+        'Protein Powder', 'bottomAisle3',
         'bottomAisle4',  'bottomAisle5',
-        'bottomAisle6',  'DriedFruit',
+        'bottomAisle6',  'Dried Fruit',
         'topAisle6',     'topAisle7',
         'topAisle8',     'topAisle9',
         'topAisle10',    'Oats',
         'topAisle10',    'topAisle11',
         'Tea',           'Coffee',
         'bottomAisle11', 'exit']},
-        {items:["Olives","Beans","Oil","Rice","Tea","NutBars"],shortestPath:[
+        {items:["Olives","Beans","Oil","Rice","Tea","Nut Bars"],shortestPath:[
             'start',         'topAisle3',
-            'NutBars',       'bottomAisle3',
+            'Nut Bars',       'bottomAisle3',
             'bottomAisle4',  'bottomAisle5',
             'bottomAisle6',  'Rice',
             'bottomAisle6',  'bottomAisle7',
@@ -210,9 +210,9 @@ function testShortestPathFinder(){
             'topAisle9',     'topAisle10',
             'topAisle11',    'Tea',
             'bottomAisle11', 'exit']},
-        {items:["BabyProducts","ChildSupplements","Condiments","Coffee","Sugar","PeanutButter","Cereal"],shortestPath:[
+        {items:["Baby Products","Child Supplements","Condiments","Coffee","Sugar","Peanut Butter","Cereal"],shortestPath:[
             'start',         'topAisle2',
-            'BabyProducts',  'ChildSupplements',
+            'Baby Products',  'Child Supplements',
             'bottomAisle2',  'bottomAisle3',
             'bottomAisle4',  'bottomAisle5',
             'bottomAisle6',  'bottomAisle7',
@@ -220,7 +220,7 @@ function testShortestPathFinder(){
             'bottomAisle8',  'Sugar',
             'bottomAisle8',  'bottomAisle9',
             'Cereal',        'bottomAisle9',
-            'bottomAisle10', 'PeanutButter',
+            'bottomAisle10', 'Peanut Butter',
             'bottomAisle10', 'bottomAisle11',
             'Coffee',        'bottomAisle11',
             'exit']}
