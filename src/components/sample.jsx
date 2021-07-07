@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import ShortestPathFinder from "./shortestPathFinder.js";
 
 import map from '../data/map.json'
-import tests from '../test.js' 
 
 import styled from 'styled-components';
 
@@ -30,8 +28,12 @@ componentDidMount(){
 
 
     var total_aisle = 12;
-
     var position = 0;
+
+    var aisleWidth = 100;
+    var shelfWidth = 40;
+    var shelfLength = 180;
+
     function drawAisle(aisleWidth, shelfWidth, shelfLength ){
         ctx.fillStyle = 'brown';
         for(let i = 0; i < total_aisle; i++){
@@ -42,10 +44,12 @@ componentDidMount(){
         
     }
 
-    drawAisle(80,30,180);
+    drawAisle(aisleWidth,shelfWidth,shelfLength);
 
 
     var visited_array = {};
+
+    var lineHeight = 15;
     ctx.fillStyle = 'white';
     for (var key in map) {
         
@@ -56,8 +60,28 @@ componentDidMount(){
             let id_str = key;
             let x = map[key].x;
             let y = map[key].y;
+
+
+            ctx.save();
+            ctx.translate(x, y);
+
+            ctx.rotate(90 * Math.PI / 180);
+
+            ctx.textAlign = 'center';
             ctx.font = "8px Arial";
-            ctx.fillText(id_str.substring(0, 5), x, y);
+            
+            if(map[key].side == "r"){
+                ctx.fillText(id_str.substring(0, 6), 0, (lineHeight / 2)-8);
+            }
+            else{
+                ctx.fillText(id_str.substring(0, 6), 0, (lineHeight / 2)+0);
+            }
+
+            ctx.restore();
+            
+
+            //ctx.font = "8px Arial";
+            //ctx.fillText(id_str.substring(0, 5), x, y);
         }
     }
 

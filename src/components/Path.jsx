@@ -3,7 +3,7 @@ import { Link as ReactRouterDomLink } from "react-router-dom";
 import ShortestPathFinder from "./shortestPathFinder.js";
 import Graph from './sample.jsx';
 import styled from 'styled-components';
-
+import Direction from './Direction.jsx';
 import carty from '../assets/whitecarty.png';
 
 const ContentStyle = styled.div`
@@ -88,6 +88,7 @@ class Path extends Component {
         <Title><Logo src={carty} />Your quickest path:</Title>
         <Container>
           <Graph path={path}></Graph>
+          <Direction path={path}></Direction>
         </Container>
         <Message>Thanks for shopping at Costco!</Message>
         <StyledLink to="/">Continue shopping</StyledLink>
