@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import Checkbox from './Checkbox.jsx';
+import Emoji from './Emoji.jsx';
 import styled from 'styled-components';
 
 const ItemBox = styled.div`
+  @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+  
   background-color: #6D7FAB;
   border-radius: 20px;
   margin-left: 15%;
@@ -15,22 +18,29 @@ const ItemBox = styled.div`
 
 const Column = styled.div`
   float: left;
-  width: 33%;
+  width: 25%;
   text-align: center;
 `;
 
 const ItemName = styled.p`
   color: white;
-  text-align: center;
+  text-align: left;
   padding-top: 20px;
   padding-bottom: 20px;
-  font-size: 25px;
+  font-size: 20px;
+  font-family: 'Nunito', sans-serif;
 `;
 
 const ItemImg = styled.img`
   padding-left: 0;
   margin: 0;
   width: 50%;
+`;
+
+const Description = styled.p`
+  color: white;
+  font-style: italic;
+  font-family: 'Nunito', sans-serif;
 `;
 
 class Item extends Component {
@@ -50,11 +60,10 @@ class Item extends Component {
         </Column>
         <Column>
           <ItemName>{this.props.name}</ItemName>
-          {this.props.category}
-          <br/>
-          {this.props.price}
-          <br/>
-          {this.props.rating}
+        </Column>
+        <Column>
+          <Description>${this.props.price}</Description>
+          <Description><Emoji symbol="⭐️" label="star"/> {this.props.rating}</Description>
         </Column>
         <Column>
           <label>
