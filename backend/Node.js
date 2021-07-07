@@ -101,6 +101,8 @@ assignNeighborsAndWeights(aisles);
 let sections = parseSections(sectionsJSON);
 assignSectionNeighborsAndWeights(sections,aisles);
 let iter=1;
+storeNodes(aisles,sections);
+
 for(const section of sections){
     console.log("--------------------------------------------\n\n\n section ",iter);
     for(const node of section){
@@ -108,7 +110,6 @@ for(const section of sections){
     }
     iter++;
 }
-storeNodes(aisles,sections);
 function getClothingCoords(node,column,length,index){
     const ORIGIN = {x:0,y:250};
     const COLUMN_WIDTH = 100;
@@ -163,17 +164,20 @@ function assignSectionNeighborsAndWeights(sectionNodes,aisleNodes){
         }
     }
     //now connect first 3 nodes of column 2 to column 4, and to all bottom connectors but the first.
-    for (let i=0;i<sectionNodes[1].length;i++){
-        //to column 4
-        if(canGoDirectlyTo(sectionNodes[1][i],sectionNodes[3][0],sectionNodes[2][0],"over")){
-            sectionNodes[1][i].addEdge(sectionNodes[3][0]);
-            sectionNodes[3][0].addEdge(sectionNodes[1][i]);
-        }
-        //to bottom connectors
-        for(let j=0;j<aisleNodes.length;j++){
-            if(i===0 || canGoDirectlyTo(sectionNodes[1][i],aisleNodes[j][aisleNodes[j].length - 1],sectionNodes[1][i-1],"under")){
-                sectionNodes[1][i].addEdge(aisleNodes[j][aisleNodes[j].length - 1]);
-                aisleNodes[j][aisleNodes[j].length - 1].addEdge(sectionNodes[1][i]);
+    for(const columnNumber of [0,1])
+    {
+        for (let i=0;i<sectionNodes[columnNumber].length;i++){
+            //to column 4
+            if( columnNumber == 1 && canGoDirectlyTo(sectionNodes[columnNumber][i],sectionNodes[3][0],sectionNodes[2][0],"over")){
+                sectionNodes[columnNumber][i].addEdge(sectionNodes[3][0]);
+                sectionNodes[3][0].addEdge(sectionNodes[columnNumber][i]);
+            }
+            //to bottom connectors
+            for(let j=0;j<aisleNodes.length;j++){
+                if(i===0 || canGoDirectlyTo(sectionNodes[columnNumber][i],aisleNodes[j][aisleNodes[j].length - 1],sectionNodes[columnNumber][i-1],"under")){
+                    sectionNodes[columnNumber][i].addEdge(aisleNodes[j][aisleNodes[j].length - 1]);
+                    aisleNodes[j][aisleNodes[j].length - 1].addEdge(sectionNodes[columnNumber][i]);
+                }
             }
         }
     }

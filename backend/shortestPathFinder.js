@@ -171,7 +171,7 @@ function equals(list1,list2){
     }
     for(i=0;i<list1.length;i++){
         if(list1[i] != list2[i]){
-            return False;
+            return false;
         }
     }
     return true;
@@ -235,7 +235,17 @@ function testShortestPathFinder(){
             'bottomAisle10', 'Peanut Butter',
             'bottomAisle10', 'bottomAisle11',
             'Coffee',        'bottomAisle11',
-            'leggings','exit']}
+            'leggings','exit']},
+        {items:["Baby Products","Vitamins"],shortestPath:[ 
+            'start',
+            'topAisle1',
+            'Vitamins',
+            'topAisle1',
+            'topAisle2',
+            'Baby Products',
+            'bottomAisle2',
+            'jackets',
+            'exit']}
     ]
     let spf = new ShortestPathFinder();
     for (const test of tests){
