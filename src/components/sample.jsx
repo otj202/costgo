@@ -1,10 +1,23 @@
 import React, { Component } from 'react';
 import ShortestPathFinder from "./shortestPathFinder.js";
 
-import map from './map.json'
-import tests from '../test.js'
+import map from '../data/map.json'
+import tests from '../test.js' 
+
+import styled from 'styled-components';
 
 
+const Container = styled.div`
+  background-color: #364C83;
+  border-radius: 20px;
+  margin-left: 7%;
+  margin-right: 7%;
+  height: 60vh;
+  display: flexbox;
+  justify-content: center; 
+  align-items: center;
+  
+`;
 
 
 console.log(map["Chips"]);
@@ -16,7 +29,7 @@ componentDidMount(){
     var ctx = c.getContext("2d");
 
 
-    var total_aisle = 11;
+    var total_aisle = 12;
 
     var position = 0;
     function drawAisle(aisleWidth, shelfWidth, shelfLength ){
@@ -29,11 +42,11 @@ componentDidMount(){
         
     }
 
-    drawAisle(100,40,180);
+    drawAisle(80,30,180);
 
 
     var visited_array = {};
-    ctx.fillStyle = 'black';
+    ctx.fillStyle = 'white';
     for (var key in map) {
         
         if (map.hasOwnProperty(key)) {
@@ -44,7 +57,7 @@ componentDidMount(){
             let x = map[key].x;
             let y = map[key].y;
             ctx.font = "8px Arial";
-            //ctx.fillText(id_str.substring(0, 5), x, y);
+            ctx.fillText(id_str.substring(0, 5), x, y);
         }
     }
 
@@ -76,26 +89,23 @@ componentDidMount(){
         }
     } 
 
-    var pos = 1; //Tests stored in an array, there are a total of 4 tests
-    //document.getElementById("items").innerHTML= tests[pos].items;
+    //document.getElementById("items").innerHTML= this.props.path;
     draw_path(this.props.path);    
-    //let path = new ShortestPathFinder().getShortestPath(tests[pos].items);
-    //draw_path(path);
 
 
 }
   render() {
     return (
-        <div>
-            <h1 id="items">Store Map</h1> 
-            <canvas id="canvas" height="400" width="1600"></canvas>
-        </div>
+        <Container>
+            <canvas  id="canvas" width="1600" height="400"></canvas>
+        </Container>
     );
   }
 }
 
 
 console.log("Heloooo!!!!");
+
 
 
 export default Graph;
