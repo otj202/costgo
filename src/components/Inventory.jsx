@@ -44,7 +44,22 @@ class Inventory extends Component {
     });
     var current = "";
     let list = [];
-
+    let categoriesDict={};
+    for(const item of arr){
+      if(categoriesDict[item.category] === undefined){
+        categoriesDict[item.category] = [<>
+          <Section>{item.category}</Section>
+          <Item key={item.name} name={item.name} img={images[item.name]} onItemChanged={this.props.onItemChanged} category={item.category} rating={item.rating} price={item.price}/>
+          </>];
+      }
+      else{
+          categoriesDict[item.category].push(<Item key={item.name} name={item.name} img={images[item.name]} onItemChanged={this.props.onItemChanged} category={item.category} rating={item.rating} price={item.price}/>);
+      }  
+    }
+    for (const categoryList of Object.values(categoriesDict)){
+      list=list.concat(categoryList);
+    }
+    /*
     arr.map(item => {
       if (item.category == current) {
         list.push(<Item key={item.name} name={item.name} img={images[item.name]} onItemChanged={this.props.onItemChanged} category={item.category} rating={item.rating} price={item.price}/>)
@@ -56,7 +71,7 @@ class Inventory extends Component {
               </>)
       }
     });
-
+    */
     return (
       <Container>
         <Title>Inventory</Title>
