@@ -111,6 +111,7 @@ for(const section of sections){
     iter++;
 }
 function getClothingCoords(node,column,length,index){
+    console.log("node is",node,"column is ",column,"length is ",length,"index is ",index);
     const ORIGIN = {x:0,y:250};
     const COLUMN_WIDTH = 100;
     const COLUMN_LENGTH = 180;
@@ -119,13 +120,14 @@ function getClothingCoords(node,column,length,index){
 }
 function parseClothingSection(clothing){
     columnNums={"column1":1,"column2":2,"column3":3,"column4":4};
-    clothingNodes=[]
+    clothingNodes=[];
     for(const column of Object.keys(clothing)){
         let columnNodes = [];
         let clothingInd=1;
-        let columnLength=clothing[column].length;
-        for (const item of clothing[column]){
-            node= new Node(item,null,null,null,null,null,null);
+        let columnLength=Object.keys(clothing[column]).length;
+        for (const [itemName, item] of Object.entries(clothing[column])){
+            console.log("an item looks like ",item);
+            node= new Node(itemName,null,null,null,item["category"],item["rating"],item["price"]);
             getClothingCoords(node,columnNums[column],columnLength,clothingInd++);
             columnNodes.push(node);
         }
