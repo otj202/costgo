@@ -228,6 +228,7 @@ function storeNodes(aisles,sections) {
         startNode.addEdge(aisles[i][0]);
         aisles[i][0].addEdge(startNode);
         // we no longer add edges to the exit because all bottomAisles are BLOCKED by the clothing section
+        aisles[i][aisles[i].length-1].addEdge(exitNode);
     }
 
     for(var i = 0; i < sections.length;i++){

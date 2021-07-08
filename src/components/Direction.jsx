@@ -81,30 +81,52 @@ class Direction extends Component {
 
   array.map((item, i)=>
     { if ((i+1) == len) {
-      order.push( 
-        <> 
+      let aisleStr = <> 
+      <Step>
+        <ImgContainer>
+          <Icon src={pin}></Icon>
+          <Number digit={num}>{num}</Number>
+        </ImgContainer>
+        <Name>{map[item].name}</Name><Aisle>Aisle {map[item].aisle}</Aisle>
+      </Step>
+      </>;
+      let sectionStr = 
+      <> 
        <Step>
          <ImgContainer>
            <Icon src={pin}></Icon>
-           <Number digit={num}>{num++}</Number>
+           <Number digit={num}>{num}</Number>
          </ImgContainer>
-         <Name>{map[item].name}</Name><Aisle>Aisle {map[item].aisle}</Aisle>
+         <Name>{map[item].name}</Name><Aisle>{map[item].category} Section</Aisle>
        </Step>
-       </>
-      );
+       </>;
+      let orderStr=map[item].aisle > 0 ? aisleStr : sectionStr;
+      order.push(orderStr);
+      num++;
     } else {
-      order.push( 
-        <> 
-        <Step>
-          <ImgContainer>
-            <Icon src={pin}></Icon>
-            <Number digit={num}>{num++}</Number>
-          </ImgContainer>
-          <Name>{map[item].name}</Name><Aisle>Aisle {map[item].aisle}</Aisle>
-        </Step>
-        <Connector>.....</Connector>
-        </>
-      );
+      let aisleStr = <> 
+      <Step>
+        <ImgContainer>
+          <Icon src={pin}></Icon>
+          <Number digit={num}>{num}</Number>
+        </ImgContainer>
+        <Name>{map[item].name}</Name><Aisle>Aisle {map[item].aisle}</Aisle>
+      </Step>
+      <Connector>.....</Connector>
+      </>;
+      let sectionStr = <> 
+      <Step>
+        <ImgContainer>
+          <Icon src={pin}></Icon>
+          <Number digit={num}>{num}</Number>
+        </ImgContainer>
+        <Name>{map[item].name}</Name><Aisle>{map[item].category} Section</Aisle>
+      </Step>
+      <Connector>.....</Connector>
+      </>;
+      let orderStr=map[item].aisle > 0 ? aisleStr : sectionStr;
+      order.push(orderStr);
+      num++
     }}
   ); 
 
