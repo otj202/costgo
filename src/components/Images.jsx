@@ -38,7 +38,16 @@ import drinks from '../assets/Drinks.png';
 import juices from '../assets/Juices.png';
 import tea from '../assets/Tea.png';
 import coffee from '../assets/Coffee.png';
-
+import shirts from '../assets/Shirts.png';
+import pants from '../assets/Pants.png';
+import shorts from '../assets/Shorts.png';
+import jackets from '../assets/Jackets.png';
+import skirts from '../assets/Skirts.png';
+import dresses from '../assets/Dresses.png';
+import tanktops from '../assets/TankTops.png';
+import leggings from '../assets/Leggings.png';
+import shoes from '../assets/Shoes.png';
+import socks from '../assets/Socks.png';
 
 const images = {
   "Supplements": supp,
@@ -81,6 +90,16 @@ const images = {
   "Juices": juices,
   "Tea": tea,
   "Coffee": coffee,
+  "Shirts": shirts,
+  "Pants": pants,
+  "Shorts": shorts,
+  "Jackets": jackets,
+  "Skirts": skirts,
+  "Dresses": dresses,
+  "Tank Tops": tanktops,
+  "Leggings": leggings,
+  "Shoes": shoes,
+  "Socks": socks
 };
 
 export default images;
