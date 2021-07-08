@@ -129,21 +129,19 @@ componentDidMount(){
                 ctx.strokeStyle = '#88F37F';
                 ctx.lineWidth = 3;
                 
-                // draw a red line
 
-                //ctx.font = "15px Arial";
-                //ctx.fillText(i+1, curr_node.x, curr_node.y);
+
+
+                ctx.beginPath();
+                ctx.moveTo(curr_node.x, curr_node.y);
+                ctx.lineTo(next_node.x, next_node.y);
+                ctx.stroke(); 
 
                 if(next_node.connectorType == null){
                     drawLocator(next_node.x, next_node.y, 30, count);
                     count+=1;
                 }
                 
-
-                ctx.beginPath();
-                ctx.moveTo(curr_node.x, curr_node.y);
-                ctx.lineTo(next_node.x, next_node.y);
-                ctx.stroke();
     
             }
     
