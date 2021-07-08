@@ -36,7 +36,7 @@ const Container = styled.div`
   margin-right: 7%;
   margin-bottom: 50px;
   margin-top: 10px;
-  height: 60vh;
+  height: 80vh;
   overflow: scroll;
 `;
 
