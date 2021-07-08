@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link as ReactRouterDomLink } from "react-router-dom";
 import styled from 'styled-components';
 
+import carty from '../assets/confusedcarty.png';
+
 const ContentStyle = styled.div`
   background-color: #091A45;
   height: 85vh;
@@ -26,6 +28,10 @@ const Container = styled.div`
   margin-right: 7%;
   margin-top: 5px;
   border-radius: 20px;
+`;
+
+const Logo = styled.img`
+  height: 100px;
 `;
 
 const Message = styled.p`
@@ -64,6 +70,7 @@ class Error extends Component {
     return (
       <ContentStyle>
         <Container>
+          <Logo src={carty} />
           <Message>Oops! <br />It looks like you forgot to select your items.</Message>
           <StyledLink to="/">Try again</StyledLink>
         </Container>
