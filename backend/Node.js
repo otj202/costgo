@@ -220,7 +220,7 @@ function assignNeighborsAndWeights(aisles) {
 }
 function storeNodes(aisles,sections) {
     startNode = new Node("start", 0, null, "top");
-    startNode.setXY(10,10);
+    startNode.setXY(10,25);
     exitNode = new Node("exit", 0, null, "bottom");
     exitNode.setXY(10,800);
 

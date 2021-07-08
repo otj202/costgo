@@ -46,6 +46,46 @@ componentDidMount(){
 
     drawAisle(aisleWidth,shelfWidth,shelfLength);
 
+    function drawEntryArrow(X, Y, text, length){
+
+        let height = 10;
+
+        ctx.fillStyle = 'yellow';
+        ctx.textAlign = 'center';
+        ctx.font = "15px Arial";
+        ctx.fillText(text, X+(length/2), Y-12); 
+
+        ctx.strokeStyle = "yellow";
+        ctx.lineWidth = 2;
+        ctx.moveTo(X, Y);
+        ctx.lineTo(X+length, Y);
+        ctx.lineTo(X+length - 10, Y-height);
+        ctx.moveTo(X+length, Y);
+        ctx.lineTo(X+length - 10, Y+height);
+        ctx.stroke();
+        ctx.closePath(); 
+    } 
+
+    function drawExitArrow(X, Y, text, length){
+
+        let height = 10;
+
+        ctx.fillStyle = 'yellow';
+        ctx.textAlign = 'center';
+        ctx.font = "15px Arial";
+        ctx.fillText(text, X+(length/2), Y-12); 
+
+        ctx.strokeStyle = "yellow";
+        ctx.lineWidth = 2;
+        ctx.moveTo(X, Y);
+        ctx.lineTo(X+length, Y);
+        ctx.moveTo(X, Y);
+        ctx.lineTo(X+10, Y-height);
+        ctx.moveTo(X, Y);
+        ctx.lineTo(X+10, Y+height);
+        ctx.stroke();
+        ctx.closePath(); 
+    }
 
     var visited_array = {};
 
@@ -61,7 +101,15 @@ componentDidMount(){
             let x = map[key].x;
             let y = map[key].y;
 
-            if(map[key].connectorType == null){
+
+            if(key == "start"){
+                drawEntryArrow(x, y, "Enter", 40);
+            }
+            else if (key == "exit"){
+                drawExitArrow(x, y, "Exit", 40);
+            }
+
+            else if(map[key].connectorType == null){
                 ctx.save();
                 ctx.translate(x, y);
     
@@ -191,7 +239,7 @@ componentDidMount(){
   render() {
     return (
         <Container>
-            <canvas  id="canvas" width="1550" height="800"></canvas>
+            <canvas  id="canvas" width="1550" height="830"></canvas>
         </Container>
     );
   }
