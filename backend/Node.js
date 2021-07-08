@@ -250,7 +250,7 @@ function storeNodes(aisles,sections) {
     nodesDict[exitNode.name] = exitNode;
 
     var fs = require('fs');
-    fs.writeFile("../src/data/map.json", JSON.stringify(nodesDict), function(err, result) {
+    fs.writeFile("map.json", JSON.stringify(nodesDict), function(err, result) {
         if(err) console.log('error', err);
       });
 }
