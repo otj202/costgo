@@ -143,54 +143,28 @@ function parseSections(sectionsJSON){
 
 function assignSectionNeighborsAndWeights(sectionNodes,aisleNodes){
     for(let i=0;i<sectionNodes.length;i++){
-        for(let a=0;a<aisleNodes.length;a++){
-            sectionNodes[i][0].addEdge(aisleNodes[a][aisleNodes[a].length - 1]);
-            aisleNodes[a][aisleNodes[a].length - 1].addEdge(sectionNodes[i][0]);
-        }
-        if(i<sectionNodes.length-1){
-            sectionNodes[i][0].addEdge(sectionNodes[i+1][0]);
-            sectionNodes[i+1][0].addEdge(sectionNodes[i][0]);
-        }
-        else{
-            break;
-        }
-        for(let j=0;j<sectionNodes[i].length;j++){
-            if(j < sectionNodes[i].length-1){
-                sectionNodes[i][j].addEdge(sectionNodes[i][j+1]);
-                sectionNodes[i][j+1].addEdge(sectionNodes[i][j]);
+        for(let s=0;s<sectionNodes[i].length;s++)
+        {
+            //add edges to all the bottom connectors
+            for(let a=0;a<aisleNodes.length;a++){
+                sectionNodes[i][s].addEdge(aisleNodes[a][aisleNodes[a].length - 1]);
+                aisleNodes[a][aisleNodes[a].length - 1].addEdge(sectionNodes[i][s]);
             }
-            for(let k=0;k<sectionNodes[i+1].length;k++){
-                sectionNodes[i][j].addEdge(sectionNodes[i+1][k]);
-                sectionNodes[i+1][k].addEdge(sectionNodes[i][j]);
-            }            
-        }
-    }
-    //now connect first 3 nodes of column 2 to column 4, and to all bottom connectors but the first.
-    for(const columnNumber of [0,1])
-    {
-        for (let i=0;i<sectionNodes[columnNumber].length;i++){
-            //to column 4
-            if( columnNumber == 1 && canGoDirectlyTo(sectionNodes[columnNumber][i],sectionNodes[3][0],sectionNodes[2][0],"over")){
-                sectionNodes[columnNumber][i].addEdge(sectionNodes[3][0]);
-                sectionNodes[3][0].addEdge(sectionNodes[columnNumber][i]);
+            //add edges to all nodes in the same column as it
+            for(let t=s+1;t<sectionNodes[i].length;t++){
+                sectionNodes[i][s].addEdge(sectionNodes[i][t]);
+                sectionNodes[i][t].addEdge(sectionNodes[i][s]);
             }
-            //to bottom connectors
-            for(let j=0;j<aisleNodes.length;j++){
-                if(i===0 || canGoDirectlyTo(sectionNodes[columnNumber][i],aisleNodes[j][aisleNodes[j].length - 1],sectionNodes[columnNumber][i-1],"under")){
-                    sectionNodes[columnNumber][i].addEdge(aisleNodes[j][aisleNodes[j].length - 1]);
-                    aisleNodes[j][aisleNodes[j].length - 1].addEdge(sectionNodes[columnNumber][i]);
+            //add edges to all other nodes in clothing section
+            for(let j=i+1;j<sectionNodes.length;j++){
+                for(let k=0; k < sectionNodes[j].length;k++){
+                    sectionNodes[i][s].addEdge(sectionNodes[j][k]);
+                    sectionNodes[j][k].addEdge(sectionNodes[i][s]);
                 }
-            }
+        }
+
         }
     }
-}
-//can you go in a straight line from node to target while staying on the correct side of through?
-function canGoDirectlyTo(node,target,through,side){
-    let [xs,ys] = [node.x,node.y];
-    let [xf,yf] = [target.x,target.y];
-    let m = (ys - yf)/(xs - xf);
-    let b = (xs*yf - ys*xf)/(xs - xf);
-    return side==="under"? m*through.x + b > through.y:m*through.x + b < through.y;
 }
 
 function assignNeighborsAndWeights(aisles) {
@@ -232,8 +206,10 @@ function storeNodes(aisles,sections) {
     }
 
     for(var i = 0; i < sections.length;i++){
-        sections[i][sections[i].length - 1].addEdge(exitNode);
-        exitNode.addEdge(sections[i][sections[i].length - 1]);
+        for(var j = 0; j < sections[i].length;j++){
+            sections[i][j].addEdge(exitNode);
+            exitNode.addEdge(sections[i][j]);
+        }
     }
     
     var nodesDict = {};

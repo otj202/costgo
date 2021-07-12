@@ -174,6 +174,18 @@ function equals(list1,list2){
     }
     return true;
 }
+
+function getTestsForBottomConnectorAlgorithm(){
+    let tests=[];
+    let clothing_items=["Shirts","Pants","Shorts","Jackets","Skirts","Dresses","Tank Tops","Leggings","Shoes","Socks"];
+    for (let i=0;i<clothing_items.length;i++){
+        tests.push({items:[clothing_items[i]],shortestPath:[]});
+        for(let j=i;j<clothing_items.lenght;j++){
+            tests.push({items:[clothing_items[i],clothing_items[j]],shortestPath:[]});
+        }
+    }
+    return tests;
+}
 function testShortestPathFinder(){
     let tests = [
         {items:["Juices","Bread"],shortestPath:[
@@ -255,6 +267,7 @@ function testShortestPathFinder(){
   'exit']
         }
     ]
+   // tests = getTestsForBottomConnectorAlgorithm();
     let spf = new ShortestPathFinder();
     for (const test of tests){
         let path=spf.getShortestPath(test.items);
@@ -267,5 +280,5 @@ function testShortestPathFinder(){
         }
     }
 }
-//testShortestPathFinder();
+testShortestPathFinder();
 export default ShortestPathFinder;
